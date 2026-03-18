@@ -42,6 +42,7 @@ const ScrollViewOuter = styled(StyledScrollView)`
 const Content = styled.div`
   box-sizing: border-box;
   flex: 1;
+  min-width: 0;
   height: 100%;
   padding: 4px;
   overflow-y: auto;
