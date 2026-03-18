@@ -115,8 +115,6 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
     const handleEnter = (
       event: React.FocusEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
     ) => {
-      event.persist();
-
       if (isReactFocusEvent(event)) {
         onFocus?.(event);
       } else if (isReactMouseEvent(event)) {
@@ -144,8 +142,6 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
     const handleLeave = (
       event: React.FocusEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
     ) => {
-      event.persist();
-
       if (isReactFocusEvent(event)) {
         onBlur?.(event);
       } else if (isReactMouseEvent(event)) {
