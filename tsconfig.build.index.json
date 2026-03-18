@@ -4,7 +4,8 @@
     "emitDeclarationOnly": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "sourceMap": false
+    "sourceMap": false,
+    "types": ["react", "react-dom", "styled-components", "jest", "node"]
   },
   "include": [
     "types/global.d.ts",

@@ -79,7 +79,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
 
       // move row containing currently selected tab to the bottom
       const currentlySelectedRowIndex = tabRows.findIndex(tabRow =>
-        tabRow.tabs.some(tab => tab.props.selected)
+        tabRow.tabs.some(tab => (tab as React.ReactElement<{ selected?: boolean }>).props.selected)
       );
       tabRows.push(tabRows.splice(currentlySelectedRowIndex, 1)[0]);
 
