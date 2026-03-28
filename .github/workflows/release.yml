@@ -22,7 +22,7 @@ jobs:
           node-version: 16
 
       - name: Cache packages
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           key: node_modules-v4-${{ hashFiles('yarn.lock') }}
           path: |-
@@ -57,7 +57,7 @@ jobs:
           node-version: 16
 
       - name: Cache packages
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           key: node_modules-v4-${{ hashFiles('yarn.lock') }}
           path: |-
