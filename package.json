@@ -114,7 +114,7 @@
     "react": "^17.0.2",
     "react-docgen-typescript": "^2.2.2",
     "react-dom": "^17.0.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^6.0.0",
     "rollup": "^2.77.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-esbuild": "^4.9.1",
