@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { shadow } from '../common';
@@ -91,8 +91,8 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
     ref
   ) => {
     const [show, setShow] = useState(false);
-    const [openTimer, setOpenTimer] = useState<number>();
-    const [closeTimer, setCloseTimer] = useState<number>();
+    const openTimerRef = useRef<number | undefined>(undefined);
+    const closeTimerRef = useRef<number | undefined>(undefined);
 
     const isUsingFocus = !disableFocusListener;
     const isUsingMouse = !disableMouseListener;
@@ -100,8 +100,8 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
     const handleOpen = (
       event: React.FocusEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
     ) => {
-      window.clearTimeout(openTimer);
-      window.clearTimeout(closeTimer);
+      window.clearTimeout(openTimerRef.current);
+      window.clearTimeout(closeTimerRef.current);
 
       const timer = window.setTimeout(() => {
         setShow(true);
@@ -109,7 +109,7 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
         onOpen?.(event);
       }, enterDelay);
 
-      setOpenTimer(timer);
+      openTimerRef.current = timer;
     };
 
     const handleEnter = (
@@ -127,8 +127,8 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
     const handleClose = (
       event: React.FocusEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>
     ) => {
-      window.clearTimeout(openTimer);
-      window.clearTimeout(closeTimer);
+      window.clearTimeout(openTimerRef.current);
+      window.clearTimeout(closeTimerRef.current);
 
       const timer = window.setTimeout(() => {
         setShow(false);
@@ -136,7 +136,7 @@ const Tooltip = forwardRef<HTMLSpanElement, TooltipProps>(
         onClose?.(event);
       }, leaveDelay);
 
-      setCloseTimer(timer);
+      closeTimerRef.current = timer;
     };
 
     const handleLeave = (
