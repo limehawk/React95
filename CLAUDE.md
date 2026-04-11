@@ -96,6 +96,33 @@ bun remove react95 && bun add react95@github:limehawk/React95
 
 (`bun install --force` alone may not update the git ref.)
 
+## Scope
+
+This is a **public, standalone component library** — a modernized MIT fork of
+[react95-io/React95](https://github.com/react95-io/React95) for any React 19 /
+styled-components 6 project. Keep the scope disciplined: every change should
+benefit any Win95 UI consumer, not be tailored to one downstream app.
+
+Scope guards:
+- API changes must still make sense for a general React 19 Win95 UI consumer
+- Keep `README.md`, Storybook stories, and TypeScript declarations in sync
+- Do NOT add features that only make sense for one specific consumer
+- Preserve upstream credit and the MIT license
+- New public components need Storybook stories and ideally unit tests
+
+## Integration Testing
+
+`limehawk-website` at `~/dev/limehawk-website` is our local test consumer
+during modernization — one of many possible downstream apps, not the point of
+this library. It pins `"react95": "github:limehawk/React95#master"`.
+
+Iteration workflow:
+1. Edit source, run `bun run build` to refresh `dist/`
+2. Link into the test consumer: `bun link` here, then `bun link react95` over there
+3. When validated, commit source + dist/, push to origin/master
+4. In the consumer's session: `bun remove react95 && bun add react95@github:limehawk/React95`
+   to pull the new commit, then commit its package.json + bun.lock
+
 ## Rules
 
 ### Do
