@@ -17,9 +17,9 @@ const StyledTableBody = styled__default["default"].tbody`
   box-shadow: ${index.insetShadow};
   overflow-y: auto;
 `;
-const TableBody = React.forwardRef(function TableBody2({ children, ...otherProps }, ref) {
+const TableBody = React.memo(React.forwardRef(function TableBody2({ children, ...otherProps }, ref) {
   return React__default["default"].createElement(StyledTableBody, { ref, ...otherProps }, children);
-});
+}));
 TableBody.displayName = "TableBody";
 
 exports.TableBody = TableBody;

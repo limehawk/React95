@@ -13,9 +13,9 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 const StyledTableHead = styled__default["default"].thead`
   display: table-header-group;
 `;
-const TableHead = React.forwardRef(function TableHead2({ children, ...otherProps }, ref) {
+const TableHead = React.memo(React.forwardRef(function TableHead2({ children, ...otherProps }, ref) {
   return React__default["default"].createElement(StyledTableHead, { ref, ...otherProps }, children);
-});
+}));
 TableHead.displayName = "TableHead";
 
 exports.TableHead = TableHead;

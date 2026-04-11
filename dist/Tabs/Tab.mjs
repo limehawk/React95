@@ -1,4 +1,4 @@
-import React__default, { forwardRef } from 'react';
+import React__default, { memo, forwardRef } from 'react';
 import styled from 'styled-components';
 import { createBoxStyles, createBorderStyles, focusOutline } from '../common/index.mjs';
 import { blockSizes } from '../common/system.mjs';
@@ -54,9 +54,9 @@ const StyledTab = styled.button`
     left: 2px;
   }
 `;
-const Tab = forwardRef(({ value, onClick, selected = false, children, ...otherProps }, ref) => {
+const Tab = memo(forwardRef(({ value, onClick, selected = false, children, ...otherProps }, ref) => {
   return React__default.createElement(StyledTab, { "aria-selected": selected, selected, onClick: (e) => onClick === null || onClick === void 0 ? void 0 : onClick(value, e), ref, role: "tab", ...otherProps }, children);
-});
+}));
 Tab.displayName = "Tab";
 
 export { Tab };

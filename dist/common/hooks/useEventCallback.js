@@ -22,10 +22,9 @@ function _interopNamespace(e) {
 
 var React__namespace = /*#__PURE__*/_interopNamespace(React);
 
-const useEnhancedEffect = typeof window !== "undefined" ? React__namespace.useLayoutEffect : React__namespace.useEffect;
 function useEventCallback(fn) {
   const ref = React__namespace.useRef(fn);
-  useEnhancedEffect(() => {
+  React__namespace.useLayoutEffect(() => {
     ref.current = fn;
   });
   return React__namespace.useCallback((...args) => (0, ref.current)(...args), []);

@@ -9,6 +9,6 @@ type FrameProps = {
     /** @deprecated Use 'window', 'button' or 'status' */
     variant?: 'outside' | 'inside' | 'well';
 }) & React.HTMLAttributes<HTMLDivElement> & CommonStyledProps;
-declare const Frame: React.ForwardRefExoticComponent<FrameProps & React.RefAttributes<HTMLDivElement>>;
+declare const Frame: React.MemoExoticComponent<React.ForwardRefExoticComponent<FrameProps & React.RefAttributes<HTMLDivElement>>>;
 export { Frame, FrameProps };
 //# sourceMappingURL=Frame.d.ts.map

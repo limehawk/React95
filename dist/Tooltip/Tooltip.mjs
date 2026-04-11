@@ -1,4 +1,4 @@
-import React__default, { forwardRef, useState } from 'react';
+import React__default, { forwardRef, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { shadow } from '../common/index.mjs';
 import { isReactFocusEvent, isReactMouseEvent } from '../common/utils/events.mjs';
@@ -37,18 +37,18 @@ const Wrapper = styled.div`
 `;
 const Tooltip = forwardRef(({ className, children, disableFocusListener = false, disableMouseListener = false, enterDelay = 1e3, leaveDelay = 0, onBlur, onClose, onFocus, onMouseEnter, onMouseLeave, onOpen, style, text, position = "top", ...otherProps }, ref) => {
   const [show, setShow] = useState(false);
-  const [openTimer, setOpenTimer] = useState();
-  const [closeTimer, setCloseTimer] = useState();
+  const openTimerRef = useRef(void 0);
+  const closeTimerRef = useRef(void 0);
   const isUsingFocus = !disableFocusListener;
   const isUsingMouse = !disableMouseListener;
   const handleOpen = (event) => {
-    window.clearTimeout(openTimer);
-    window.clearTimeout(closeTimer);
+    window.clearTimeout(openTimerRef.current);
+    window.clearTimeout(closeTimerRef.current);
     const timer = window.setTimeout(() => {
       setShow(true);
       onOpen === null || onOpen === void 0 ? void 0 : onOpen(event);
     }, enterDelay);
-    setOpenTimer(timer);
+    openTimerRef.current = timer;
   };
   const handleEnter = (event) => {
     if (isReactFocusEvent(event)) {
@@ -59,13 +59,13 @@ const Tooltip = forwardRef(({ className, children, disableFocusListener = false,
     handleOpen(event);
   };
   const handleClose = (event) => {
-    window.clearTimeout(openTimer);
-    window.clearTimeout(closeTimer);
+    window.clearTimeout(openTimerRef.current);
+    window.clearTimeout(closeTimerRef.current);
     const timer = window.setTimeout(() => {
       setShow(false);
       onClose === null || onClose === void 0 ? void 0 : onClose(event);
     }, leaveDelay);
-    setCloseTimer(timer);
+    closeTimerRef.current = timer;
   };
   const handleLeave = (event) => {
     if (isReactFocusEvent(event)) {

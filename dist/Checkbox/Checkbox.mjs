@@ -1,4 +1,4 @@
-import React__default, { forwardRef, useCallback } from 'react';
+import React__default, { memo, forwardRef, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import { createHatchedBackground } from '../common/index.mjs';
 import useControlledOrUncontrolled from '../common/hooks/useControlledOrUncontrolled.mjs';
@@ -85,7 +85,7 @@ const CheckboxComponents = {
   flat: StyledFlatCheckbox,
   default: StyledCheckbox
 };
-const Checkbox = forwardRef(({ checked, className = "", defaultChecked = false, disabled = false, indeterminate = false, label = "", onChange = noOp, style = {}, value, variant = "default", ...otherProps }, ref) => {
+const Checkbox = memo(forwardRef(({ checked, className = "", defaultChecked = false, disabled = false, indeterminate = false, label = "", onChange = noOp, style = {}, value, variant = "default", ...otherProps }, ref) => {
   var _a;
   const [state, setState] = useControlledOrUncontrolled({
     defaultValue: defaultChecked,
@@ -112,7 +112,7 @@ const Checkbox = forwardRef(({ checked, className = "", defaultChecked = false, 
     React__default.createElement(CheckboxComponent, { "$disabled": disabled, role: "presentation" }, Icon && React__default.createElement(Icon, { "$disabled": disabled, variant })),
     label && React__default.createElement(LabelText, null, label)
   );
-});
+}));
 Checkbox.displayName = "Checkbox";
 
 export { Checkbox };

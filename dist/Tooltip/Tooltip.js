@@ -46,18 +46,18 @@ const Wrapper = styled__default["default"].div`
 `;
 const Tooltip = React.forwardRef(({ className, children, disableFocusListener = false, disableMouseListener = false, enterDelay = 1e3, leaveDelay = 0, onBlur, onClose, onFocus, onMouseEnter, onMouseLeave, onOpen, style, text, position = "top", ...otherProps }, ref) => {
   const [show, setShow] = React.useState(false);
-  const [openTimer, setOpenTimer] = React.useState();
-  const [closeTimer, setCloseTimer] = React.useState();
+  const openTimerRef = React.useRef(void 0);
+  const closeTimerRef = React.useRef(void 0);
   const isUsingFocus = !disableFocusListener;
   const isUsingMouse = !disableMouseListener;
   const handleOpen = (event) => {
-    window.clearTimeout(openTimer);
-    window.clearTimeout(closeTimer);
+    window.clearTimeout(openTimerRef.current);
+    window.clearTimeout(closeTimerRef.current);
     const timer = window.setTimeout(() => {
       setShow(true);
       onOpen === null || onOpen === void 0 ? void 0 : onOpen(event);
     }, enterDelay);
-    setOpenTimer(timer);
+    openTimerRef.current = timer;
   };
   const handleEnter = (event) => {
     if (events.isReactFocusEvent(event)) {
@@ -68,13 +68,13 @@ const Tooltip = React.forwardRef(({ className, children, disableFocusListener = 
     handleOpen(event);
   };
   const handleClose = (event) => {
-    window.clearTimeout(openTimer);
-    window.clearTimeout(closeTimer);
+    window.clearTimeout(openTimerRef.current);
+    window.clearTimeout(closeTimerRef.current);
     const timer = window.setTimeout(() => {
       setShow(false);
       onClose === null || onClose === void 0 ? void 0 : onClose(event);
     }, leaveDelay);
-    setCloseTimer(timer);
+    closeTimerRef.current = timer;
   };
   const handleLeave = (event) => {
     if (events.isReactFocusEvent(event)) {

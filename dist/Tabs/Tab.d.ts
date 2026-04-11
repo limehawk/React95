@@ -6,11 +6,11 @@ type TabProps = {
     selected?: boolean;
     value?: any;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'value'> & CommonStyledProps;
-declare const Tab: React.ForwardRefExoticComponent<{
+declare const Tab: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     children?: React.ReactNode;
     onClick?: ((value: any, event: React.MouseEvent<HTMLButtonElement>) => void) | undefined;
     selected?: boolean | undefined;
     value?: any;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick" | "value"> & CommonStyledProps & React.RefAttributes<HTMLButtonElement>>;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick" | "value"> & CommonStyledProps & React.RefAttributes<HTMLButtonElement>>>;
 export { Tab, TabProps };
 //# sourceMappingURL=Tab.d.ts.map

@@ -13,7 +13,7 @@ type RadioProps = {
     value?: string | number | boolean;
     variant?: RadioVariant;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'checked' | 'className' | 'disabled' | 'name' | 'onChange' | 'style' | 'value'> & CommonStyledProps;
-declare const Radio: React.ForwardRefExoticComponent<{
+declare const Radio: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     checked?: boolean | undefined;
     className?: string | undefined;
     disabled?: boolean | undefined;
@@ -23,6 +23,6 @@ declare const Radio: React.ForwardRefExoticComponent<{
     style?: CSSProperties | undefined;
     value?: string | number | boolean | undefined;
     variant?: RadioVariant | undefined;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "name" | "style" | "className" | "onChange" | "value" | "disabled" | "checked"> & CommonStyledProps & React.RefAttributes<HTMLInputElement>>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "name" | "style" | "className" | "onChange" | "value" | "disabled" | "checked"> & CommonStyledProps & React.RefAttributes<HTMLInputElement>>>;
 export { Radio, RadioProps };
 //# sourceMappingURL=Radio.d.ts.map

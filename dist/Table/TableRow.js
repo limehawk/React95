@@ -25,9 +25,9 @@ const StyledTr = styled__default["default"].tr`
     color: ${({ theme }) => theme.canvasTextInvert};
   }
 `;
-const TableRow = React.forwardRef(function TableRow2({ children, ...otherProps }, ref) {
+const TableRow = React.memo(React.forwardRef(function TableRow2({ children, ...otherProps }, ref) {
   return React__default["default"].createElement(StyledTr, { ref, ...otherProps }, children);
-});
+}));
 TableRow.displayName = "TableRow";
 
 exports.TableRow = TableRow;

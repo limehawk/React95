@@ -3,8 +3,8 @@ import { CommonStyledProps } from '../types';
 type TableHeadProps = {
     children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLTableSectionElement> & CommonStyledProps;
-declare const TableHead: React.ForwardRefExoticComponent<{
+declare const TableHead: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLTableSectionElement> & CommonStyledProps & React.RefAttributes<HTMLTableSectionElement>>;
+} & React.HTMLAttributes<HTMLTableSectionElement> & CommonStyledProps & React.RefAttributes<HTMLTableSectionElement>>>;
 export { TableHead, TableHeadProps };
 //# sourceMappingURL=TableHead.d.ts.map

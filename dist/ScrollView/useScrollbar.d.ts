@@ -14,7 +14,6 @@ export interface UseScrollbarResult {
     handleThumbPointerUp: () => void;
     handleTrackClick: (e: React.MouseEvent) => void;
     activeButton: 'decrement' | 'increment' | null;
-    isDragging: boolean;
 }
 export declare function useScrollbar(axis?: ScrollAxis): UseScrollbarResult;
 //# sourceMappingURL=useScrollbar.d.ts.map

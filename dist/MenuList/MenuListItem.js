@@ -39,7 +39,7 @@ const StyledMenuListItem = styled__default["default"].li`
   }
   ${(props) => props.$disabled && index.createDisabledTextStyles()}
 `;
-const MenuListItem = React.forwardRef(({
+const MenuListItem = React.memo(React.forwardRef(({
   size = "lg",
   disabled,
   square,
@@ -59,7 +59,7 @@ const MenuListItem = React.forwardRef(({
     "aria-disabled": disabled,
     ...otherProps
   }, children);
-});
+}));
 MenuListItem.displayName = "MenuListItem";
 
 exports.MenuListItem = MenuListItem;

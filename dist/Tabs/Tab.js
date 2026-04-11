@@ -63,9 +63,9 @@ const StyledTab = styled__default["default"].button`
     left: 2px;
   }
 `;
-const Tab = React.forwardRef(({ value, onClick, selected = false, children, ...otherProps }, ref) => {
+const Tab = React.memo(React.forwardRef(({ value, onClick, selected = false, children, ...otherProps }, ref) => {
   return React__default["default"].createElement(StyledTab, { "aria-selected": selected, selected, onClick: (e) => onClick === null || onClick === void 0 ? void 0 : onClick(value, e), ref, role: "tab", ...otherProps }, children);
-});
+}));
 Tab.displayName = "Tab";
 
 exports.Tab = Tab;

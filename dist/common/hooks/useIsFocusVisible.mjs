@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 let hadKeyboardEvent = true;
 let hadFocusVisibleRecently = false;
 let hadFocusVisibleRecentlyTimeout;
+const preparedDocs = /* @__PURE__ */ new WeakSet();
 const inputTypesWhitelist = {
   text: true,
   search: true,
@@ -50,6 +51,9 @@ function handleVisibilityChange() {
   }
 }
 function prepare(doc) {
+  if (preparedDocs.has(doc))
+    return;
+  preparedDocs.add(doc);
   doc.addEventListener("keydown", handleKeyDown, true);
   doc.addEventListener("mousedown", handlePointerDown, true);
   doc.addEventListener("pointerdown", handlePointerDown, true);

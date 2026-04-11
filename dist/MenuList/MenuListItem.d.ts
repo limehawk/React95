@@ -12,11 +12,11 @@ export declare const StyledMenuListItem: import("styled-components").StyledCompo
     primary?: boolean | undefined;
     size: Sizes;
 }, never>;
-declare const MenuListItem: React.ForwardRefExoticComponent<{
+declare const MenuListItem: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     disabled?: boolean | undefined;
     square?: boolean | undefined;
     primary?: boolean | undefined;
     size?: Sizes | undefined;
-} & React.HTMLAttributes<HTMLLIElement> & CommonStyledProps & React.RefAttributes<HTMLLIElement>>;
+} & React.HTMLAttributes<HTMLLIElement> & CommonStyledProps & React.RefAttributes<HTMLLIElement>>>;
 export { MenuListItem, MenuListItemProps };
 //# sourceMappingURL=MenuListItem.d.ts.map

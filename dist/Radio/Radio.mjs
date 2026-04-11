@@ -1,4 +1,4 @@
-import React__default, { forwardRef } from 'react';
+import React__default, { memo, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import { createFlatBoxStyles } from '../common/index.mjs';
 import { size, StyledLabel, StyledInput, LabelText } from '../common/SwitchBase.mjs';
@@ -63,7 +63,7 @@ const CheckboxComponents = {
   flat: StyledFlatCheckbox,
   default: StyledCheckbox
 };
-const Radio = forwardRef(({ checked, className = "", disabled = false, label = "", onChange, style = {}, variant = "default", ...otherProps }, ref) => {
+const Radio = memo(forwardRef(({ checked, className = "", disabled = false, label = "", onChange, style = {}, variant = "default", ...otherProps }, ref) => {
   const CheckboxComponent = CheckboxComponents[variant];
   return React__default.createElement(
     StyledLabel,
@@ -72,7 +72,7 @@ const Radio = forwardRef(({ checked, className = "", disabled = false, label = "
     React__default.createElement(StyledInput, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, type: "radio", checked, ref, ...otherProps }),
     label && React__default.createElement(LabelText, null, label)
   );
-});
+}));
 Radio.displayName = "Radio";
 
 export { Radio };

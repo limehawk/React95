@@ -18,9 +18,9 @@ const StyledAnchor = styled__default["default"].a`
     color: ${({ theme }) => theme.anchorVisited};
   }
 `;
-const Anchor = React.forwardRef(({ children, underline = true, ...otherProps }, ref) => {
+const Anchor = React.memo(React.forwardRef(({ children, underline = true, ...otherProps }, ref) => {
   return React__default["default"].createElement(StyledAnchor, { ref, underline, ...otherProps }, children);
-});
+}));
 Anchor.displayName = "Anchor";
 
 exports.Anchor = Anchor;

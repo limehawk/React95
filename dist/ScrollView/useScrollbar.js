@@ -13,11 +13,11 @@ function useScrollbar(axis = "vertical") {
   const [thumbSize, setThumbSize] = React.useState(0);
   const [showScrollbar, setShowScrollbar] = React.useState(false);
   const [activeButton, setActiveButton] = React.useState(null);
-  const [isDragging, setIsDragging] = React.useState(false);
   const isDraggingRef = React.useRef(false);
   const dragStartPos = React.useRef(0);
   const dragStartScrollPos = React.useRef(0);
   const scrollIntervalRef = React.useRef(null);
+  const rafRef = React.useRef(null);
   const isVertical = axis === "vertical";
   const updateThumb = React.useCallback(() => {
     const el = contentRef.current;
@@ -57,8 +57,19 @@ function useScrollbar(axis = "vertical") {
     observer.observe(el, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, [updateThumb]);
+  React.useEffect(() => {
+    return () => {
+      if (rafRef.current !== null)
+        cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
   const handleScroll = React.useCallback(() => {
-    updateThumb();
+    if (rafRef.current !== null)
+      return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      updateThumb();
+    });
   }, [updateThumb]);
   const startScrolling = React.useCallback((direction) => {
     setActiveButton(direction);
@@ -87,7 +98,6 @@ function useScrollbar(axis = "vertical") {
     e.preventDefault();
     e.stopPropagation();
     isDraggingRef.current = true;
-    setIsDragging(true);
     dragStartPos.current = isVertical ? e.clientY : e.clientX;
     dragStartScrollPos.current = isVertical ? (_b = (_a = contentRef.current) === null || _a === void 0 ? void 0 : _a.scrollTop) !== null && _b !== void 0 ? _b : 0 : (_d = (_c = contentRef.current) === null || _c === void 0 ? void 0 : _c.scrollLeft) !== null && _d !== void 0 ? _d : 0;
     e.target.setPointerCapture(e.pointerId);
@@ -115,7 +125,6 @@ function useScrollbar(axis = "vertical") {
   }, [thumbSize, isVertical]);
   const handleThumbPointerUp = React.useCallback(() => {
     isDraggingRef.current = false;
-    setIsDragging(false);
   }, []);
   const handleTrackClick = React.useCallback((e) => {
     const el = contentRef.current;
@@ -149,8 +158,7 @@ function useScrollbar(axis = "vertical") {
     handleThumbPointerMove,
     handleThumbPointerUp,
     handleTrackClick,
-    activeButton,
-    isDragging
+    activeButton
   };
 }
 

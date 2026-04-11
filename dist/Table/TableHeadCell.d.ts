@@ -5,10 +5,10 @@ type TableHeadCellProps = {
     disabled?: boolean;
     sort?: 'asc' | 'desc' | null;
 } & React.TdHTMLAttributes<HTMLTableCellElement> & CommonStyledProps;
-declare const TableHeadCell: React.ForwardRefExoticComponent<{
+declare const TableHeadCell: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     children?: React.ReactNode;
     disabled?: boolean | undefined;
     sort?: "desc" | "asc" | null | undefined;
-} & React.TdHTMLAttributes<HTMLTableCellElement> & CommonStyledProps & React.RefAttributes<HTMLTableCellElement>>;
+} & React.TdHTMLAttributes<HTMLTableCellElement> & CommonStyledProps & React.RefAttributes<HTMLTableCellElement>>>;
 export { TableHeadCell, TableHeadCellProps };
 //# sourceMappingURL=TableHeadCell.d.ts.map

@@ -94,7 +94,7 @@ const CheckboxComponents = {
   flat: StyledFlatCheckbox,
   default: StyledCheckbox
 };
-const Checkbox = React.forwardRef(({ checked, className = "", defaultChecked = false, disabled = false, indeterminate = false, label = "", onChange = index$1.noOp, style = {}, value, variant = "default", ...otherProps }, ref) => {
+const Checkbox = React.memo(React.forwardRef(({ checked, className = "", defaultChecked = false, disabled = false, indeterminate = false, label = "", onChange = index$1.noOp, style = {}, value, variant = "default", ...otherProps }, ref) => {
   var _a;
   const [state, setState] = useControlledOrUncontrolled({
     defaultValue: defaultChecked,
@@ -121,7 +121,7 @@ const Checkbox = React.forwardRef(({ checked, className = "", defaultChecked = f
     React__default["default"].createElement(CheckboxComponent, { "$disabled": disabled, role: "presentation" }, Icon && React__default["default"].createElement(Icon, { "$disabled": disabled, variant })),
     label && React__default["default"].createElement(SwitchBase.LabelText, null, label)
   );
-});
+}));
 Checkbox.displayName = "Checkbox";
 
 exports.Checkbox = Checkbox;

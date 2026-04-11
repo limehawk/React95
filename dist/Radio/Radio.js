@@ -72,7 +72,7 @@ const CheckboxComponents = {
   flat: StyledFlatCheckbox,
   default: StyledCheckbox
 };
-const Radio = React.forwardRef(({ checked, className = "", disabled = false, label = "", onChange, style = {}, variant = "default", ...otherProps }, ref) => {
+const Radio = React.memo(React.forwardRef(({ checked, className = "", disabled = false, label = "", onChange, style = {}, variant = "default", ...otherProps }, ref) => {
   const CheckboxComponent = CheckboxComponents[variant];
   return React__default["default"].createElement(
     SwitchBase.StyledLabel,
@@ -81,7 +81,7 @@ const Radio = React.forwardRef(({ checked, className = "", disabled = false, lab
     React__default["default"].createElement(SwitchBase.StyledInput, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, type: "radio", checked, ref, ...otherProps }),
     label && React__default["default"].createElement(SwitchBase.LabelText, null, label)
   );
-});
+}));
 Radio.displayName = "Radio";
 
 exports.Radio = Radio;

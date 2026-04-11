@@ -12,7 +12,7 @@ type CheckboxProps = {
     value?: number | string;
     variant?: 'default' | 'flat';
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'checked' | 'className' | 'defaultChecked' | 'disabled' | 'label' | 'name' | 'onChange' | 'style' | 'value'>;
-declare const Checkbox: React.ForwardRefExoticComponent<{
+declare const Checkbox: React.MemoExoticComponent<React.ForwardRefExoticComponent<{
     checked?: boolean | undefined;
     className?: string | undefined;
     defaultChecked?: boolean | undefined;
@@ -24,6 +24,6 @@ declare const Checkbox: React.ForwardRefExoticComponent<{
     style?: React.CSSProperties | undefined;
     value?: string | number | undefined;
     variant?: "default" | "flat" | undefined;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "name" | "style" | "label" | "className" | "onChange" | "defaultChecked" | "value" | "disabled" | "checked"> & React.RefAttributes<HTMLInputElement>>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "name" | "style" | "label" | "className" | "onChange" | "defaultChecked" | "value" | "disabled" | "checked"> & React.RefAttributes<HTMLInputElement>>>;
 export { Checkbox, CheckboxProps };
 //# sourceMappingURL=Checkbox.d.ts.map

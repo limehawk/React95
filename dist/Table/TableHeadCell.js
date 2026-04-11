@@ -56,14 +56,14 @@ const StyledHeadCell = styled__default["default"].th`
     ${({ $disabled }) => $disabled && index.createDisabledTextStyles()}
   }
 `;
-const TableHeadCell = React.forwardRef(function TableHeadCell2({ disabled = false, children, onClick, onTouchStart = index$1.noOp, sort, ...otherProps }, ref) {
+const TableHeadCell = React.memo(React.forwardRef(function TableHeadCell2({ disabled = false, children, onClick, onTouchStart = index$1.noOp, sort, ...otherProps }, ref) {
   const ariaSort = sort === "asc" ? "ascending" : sort === "desc" ? "descending" : void 0;
   return React__default["default"].createElement(
     StyledHeadCell,
     { "$disabled": disabled, "aria-disabled": disabled, "aria-sort": ariaSort, onClick: disabled ? void 0 : onClick, onTouchStart: disabled ? void 0 : onTouchStart, ref, ...otherProps },
     React__default["default"].createElement("div", null, children)
   );
-});
+}));
 TableHeadCell.displayName = "TableHeadCell";
 
 exports.TableHeadCell = TableHeadCell;

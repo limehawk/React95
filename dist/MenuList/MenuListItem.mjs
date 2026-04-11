@@ -1,4 +1,4 @@
-import React__default, { forwardRef } from 'react';
+import React__default, { memo, forwardRef } from 'react';
 import styled from 'styled-components';
 import { createDisabledTextStyles } from '../common/index.mjs';
 import { blockSizes } from '../common/system.mjs';
@@ -30,7 +30,7 @@ const StyledMenuListItem = styled.li`
   }
   ${(props) => props.$disabled && createDisabledTextStyles()}
 `;
-const MenuListItem = forwardRef(({
+const MenuListItem = memo(forwardRef(({
   size = "lg",
   disabled,
   square,
@@ -50,7 +50,7 @@ const MenuListItem = forwardRef(({
     "aria-disabled": disabled,
     ...otherProps
   }, children);
-});
+}));
 MenuListItem.displayName = "MenuListItem";
 
 export { MenuListItem, StyledMenuListItem };
