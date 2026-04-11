@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 import { CommonStyledProps } from '../types';
 
@@ -10,7 +10,7 @@ type TableHeadProps = {
 const StyledTableHead = styled.thead`
   display: table-header-group;
 `;
-const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
+const TableHead = memo(forwardRef<HTMLTableSectionElement, TableHeadProps>(
   function TableHead({ children, ...otherProps }, ref) {
     return (
       <StyledTableHead ref={ref} {...otherProps}>
@@ -18,7 +18,7 @@ const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
       </StyledTableHead>
     );
   }
-);
+));
 
 TableHead.displayName = 'TableHead';
 

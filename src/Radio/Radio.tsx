@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled, { css, CSSProperties } from 'styled-components';
 
 import { createFlatBoxStyles } from '../common';
@@ -105,7 +105,7 @@ const CheckboxComponents = {
   default: StyledCheckbox
 };
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>(
+const Radio = memo(forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       checked,
@@ -139,7 +139,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
       </StyledLabel>
     );
   }
-);
+));
 
 Radio.displayName = 'Radio';
 

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 
 import { createBorderStyles, createBoxStyles, focusOutline } from '../common';
@@ -69,7 +69,7 @@ const StyledTab = styled.button<TabProps>`
   }
 `;
 
-const Tab = forwardRef<HTMLButtonElement, TabProps>(
+const Tab = memo(forwardRef<HTMLButtonElement, TabProps>(
   ({ value, onClick, selected = false, children, ...otherProps }, ref) => {
     return (
       <StyledTab
@@ -86,7 +86,7 @@ const Tab = forwardRef<HTMLButtonElement, TabProps>(
       </StyledTab>
     );
   }
-);
+));
 
 Tab.displayName = 'Tab';
 

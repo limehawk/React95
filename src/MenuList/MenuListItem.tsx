@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 import styled from 'styled-components';
 import { createDisabledTextStyles } from '../common';
@@ -49,7 +49,7 @@ export const StyledMenuListItem = styled.li<{
   ${props => props.$disabled && createDisabledTextStyles()}
 `;
 
-const MenuListItem = forwardRef<HTMLLIElement, MenuListItemProps>(
+const MenuListItem = memo(forwardRef<HTMLLIElement, MenuListItemProps>(
   (
     {
       size = 'lg',
@@ -85,7 +85,7 @@ const MenuListItem = forwardRef<HTMLLIElement, MenuListItemProps>(
       </StyledMenuListItem>
     );
   }
-);
+));
 
 MenuListItem.displayName = 'MenuListItem';
 

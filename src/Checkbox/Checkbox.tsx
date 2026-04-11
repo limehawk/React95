@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from 'react';
+import React, { forwardRef, memo, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 
 import { createHatchedBackground } from '../common';
@@ -131,7 +131,7 @@ const CheckboxComponents = {
   default: StyledCheckbox
 };
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+const Checkbox = memo(forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       checked,
@@ -193,7 +193,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       </StyledLabel>
     );
   }
-);
+));
 
 Checkbox.displayName = 'Checkbox';
 

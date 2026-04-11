@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 import { insetShadow } from '../common';
 import { CommonStyledProps } from '../types';
@@ -15,7 +15,7 @@ const StyledTableBody = styled.tbody`
   overflow-y: auto;
 `;
 
-const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+const TableBody = memo(forwardRef<HTMLTableSectionElement, TableBodyProps>(
   function TableBody({ children, ...otherProps }, ref) {
     return (
       <StyledTableBody ref={ref} {...otherProps}>
@@ -23,7 +23,7 @@ const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
       </StyledTableBody>
     );
   }
-);
+));
 
 TableBody.displayName = 'TableBody';
 

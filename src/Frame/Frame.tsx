@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled, { css } from 'styled-components';
 import { createBorderStyles, createBoxStyles } from '../common';
 import { CommonStyledProps } from '../types';
@@ -53,7 +53,7 @@ const StyledFrame = styled.div<Required<Pick<FrameProps, 'variant'>>>`
     )}
 `;
 
-const Frame = forwardRef<HTMLDivElement, FrameProps>(
+const Frame = memo(forwardRef<HTMLDivElement, FrameProps>(
   ({ children, shadow = false, variant = 'window', ...otherProps }, ref) => {
     return (
       <StyledFrame ref={ref} shadow={shadow} variant={variant} {...otherProps}>
@@ -61,7 +61,7 @@ const Frame = forwardRef<HTMLDivElement, FrameProps>(
       </StyledFrame>
     );
   }
-);
+));
 
 Frame.displayName = 'Frame';
 

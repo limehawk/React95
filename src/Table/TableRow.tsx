@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 import { blockSizes } from '../common/system';
 
@@ -21,7 +21,7 @@ const StyledTr = styled.tr`
   }
 `;
 
-const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+const TableRow = memo(forwardRef<HTMLTableRowElement, TableRowProps>(
   function TableRow({ children, ...otherProps }, ref) {
     return (
       <StyledTr ref={ref} {...otherProps}>
@@ -29,7 +29,7 @@ const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
       </StyledTr>
     );
   }
-);
+));
 
 TableRow.displayName = 'TableRow';
 

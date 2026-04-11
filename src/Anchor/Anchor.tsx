@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 
 import { CommonStyledProps } from '../types';
@@ -18,7 +18,7 @@ const StyledAnchor = styled.a<{ underline: boolean }>`
   }
 `;
 
-const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
+const Anchor = memo(forwardRef<HTMLAnchorElement, AnchorProps>(
   ({ children, underline = true, ...otherProps }: AnchorProps, ref) => {
     return (
       <StyledAnchor ref={ref} underline={underline} {...otherProps}>
@@ -26,7 +26,7 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       </StyledAnchor>
     );
   }
-);
+));
 
 Anchor.displayName = 'Anchor';
 

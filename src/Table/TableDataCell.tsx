@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled from 'styled-components';
 import { CommonStyledProps } from '../types';
 
@@ -11,7 +11,7 @@ const StyledTd = styled.td`
   padding: 0 8px;
 `;
 
-const TableDataCell = forwardRef<HTMLTableCellElement, TableDataCellProps>(
+const TableDataCell = memo(forwardRef<HTMLTableCellElement, TableDataCellProps>(
   function TableDataCell({ children, ...otherProps }, ref) {
     return (
       <StyledTd ref={ref} {...otherProps}>
@@ -19,7 +19,7 @@ const TableDataCell = forwardRef<HTMLTableCellElement, TableDataCellProps>(
       </StyledTd>
     );
   }
-);
+));
 
 TableDataCell.displayName = 'TableDataCell';
 

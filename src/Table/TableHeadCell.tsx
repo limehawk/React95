@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import styled, { css } from 'styled-components';
 import { createBorderStyles, createDisabledTextStyles } from '../common';
 import { noOp } from '../common/utils';
@@ -58,7 +58,7 @@ const StyledHeadCell = styled.th<{ $disabled: boolean }>`
   }
 `;
 
-const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps>(
+const TableHeadCell = memo(forwardRef<HTMLTableCellElement, TableHeadCellProps>(
   function TableHeadCell(
     {
       disabled = false,
@@ -86,7 +86,7 @@ const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps>(
       </StyledHeadCell>
     );
   }
-);
+));
 
 TableHeadCell.displayName = 'TableHeadCell';
 
