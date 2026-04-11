@@ -7,6 +7,8 @@ let hadKeyboardEvent = true;
 let hadFocusVisibleRecently = false;
 let hadFocusVisibleRecentlyTimeout: number;
 
+const preparedDocs = new WeakSet<Document>();
+
 const inputTypesWhitelist: Record<string, boolean> = {
   text: true,
   search: true,
@@ -90,6 +92,8 @@ function handleVisibilityChange(this: Document) {
 }
 
 function prepare(doc: Document) {
+  if (preparedDocs.has(doc)) return;
+  preparedDocs.add(doc);
   doc.addEventListener('keydown', handleKeyDown, true);
   doc.addEventListener('mousedown', handlePointerDown, true);
   doc.addEventListener('pointerdown', handlePointerDown, true);
@@ -98,6 +102,7 @@ function prepare(doc: Document) {
 }
 
 export function teardown(doc: Document) {
+  preparedDocs.delete(doc);
   doc.removeEventListener('keydown', handleKeyDown, true);
   doc.removeEventListener('mousedown', handlePointerDown, true);
   doc.removeEventListener('pointerdown', handlePointerDown, true);
