@@ -19,7 +19,6 @@ export interface UseScrollbarResult {
   handleThumbPointerUp: () => void;
   handleTrackClick: (e: React.MouseEvent) => void;
   activeButton: 'decrement' | 'increment' | null;
-  isDragging: boolean;
 }
 
 export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult {
@@ -29,11 +28,11 @@ export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult 
   const [thumbSize, setThumbSize] = useState(0);
   const [showScrollbar, setShowScrollbar] = useState(false);
   const [activeButton, setActiveButton] = useState<'decrement' | 'increment' | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
   const isDraggingRef = useRef(false);
   const dragStartPos = useRef(0);
   const dragStartScrollPos = useRef(0);
   const scrollIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   const isVertical = axis === 'vertical';
 
@@ -85,8 +84,19 @@ export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult 
     return () => observer.disconnect();
   }, [updateThumb]);
 
+  // Cancel any pending rAF on unmount
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   const handleScroll = useCallback(() => {
-    updateThumb();
+    if (rafRef.current !== null) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      updateThumb();
+    });
   }, [updateThumb]);
 
   const startScrolling = useCallback(
@@ -121,7 +131,6 @@ export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult 
       e.preventDefault();
       e.stopPropagation();
       isDraggingRef.current = true;
-      setIsDragging(true);
       dragStartPos.current = isVertical ? e.clientY : e.clientX;
       dragStartScrollPos.current = isVertical
         ? (contentRef.current?.scrollTop ?? 0)
@@ -160,7 +169,6 @@ export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult 
 
   const handleThumbPointerUp = useCallback(() => {
     isDraggingRef.current = false;
-    setIsDragging(false);
   }, []);
 
   const handleTrackClick = useCallback(
@@ -199,6 +207,5 @@ export function useScrollbar(axis: ScrollAxis = 'vertical'): UseScrollbarResult 
     handleThumbPointerUp,
     handleTrackClick,
     activeButton,
-    isDragging,
   };
 }
