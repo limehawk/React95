@@ -32,3 +32,18 @@ yarn-error.log*
 
 # JetBrains IDEs
 .idea/*
+
+# ============================================================================
+# dist/ is INTENTIONALLY committed in this repo. This fork is consumed via
+# `github:limehawk/React95` in consumer package.json files, and git
+# dependencies do not run build scripts — so the built output must ship in
+# the tree. See CLAUDE.md "Scope" + "Build Output" sections.
+#
+# Do NOT add `dist` as an ignore rule. Do NOT run gitignore-builder here —
+# the generic Node template adds `dist`, which silently breaks incremental
+# dist/ commits for new files.
+# ============================================================================
+!/dist
+!/dist/**
+
+# ===== Managed by gitignore-builder — do not edit below this line =====
