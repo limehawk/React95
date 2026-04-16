@@ -15,6 +15,7 @@ export * from './Frame/Frame';
 export * from './GroupBox/GroupBox';
 export * from './Handle/Handle';
 export * from './Hourglass/Hourglass';
+export * from './IELoading/IELoading';
 export * from './MenuList/MenuList';
 export * from './Monitor/Monitor';
 export * from './NumberInput/NumberInput';

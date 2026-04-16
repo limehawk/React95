@@ -12,6 +12,7 @@ export { Frame } from './Frame/Frame.mjs';
 export { GroupBox } from './GroupBox/GroupBox.mjs';
 export { Handle } from './Handle/Handle.mjs';
 export { Hourglass } from './Hourglass/Hourglass.mjs';
+export { IELoading } from './IELoading/IELoading.mjs';
 export { MenuList } from './MenuList/MenuList.mjs';
 export { Monitor } from './Monitor/Monitor.mjs';
 export { NumberInput } from './NumberInput/NumberInput.mjs';
