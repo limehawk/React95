@@ -1,6 +1,6 @@
-# React95 (limehawk fork)
+# React95
 
-Modernized fork of [react95-io/React95](https://github.com/react95-io/React95) — Windows 95 themed React component library. Fully compatible with React 19 and styled-components 6.
+Modern port of [react95-io/React95](https://github.com/react95-io/React95) — Windows 95 themed React component library. Fully compatible with React 19 and styled-components 6.
 
 ## What changed from upstream
 
@@ -8,6 +8,8 @@ Modernized fork of [react95-io/React95](https://github.com/react95-io/React95) �
 - **Removed dead `event.persist()` calls** from Tooltip — no-op since React 17.
 - **Rewrote ScrollView** with a JS-rendered scrollbar that works on all platforms (mobile Safari doesn't support CSS `::-webkit-scrollbar`).
 - **Updated peerDependencies** to accept styled-components 6.
+- **Transient props** — all styled-component props use `$`-prefixed transient props to prevent DOM attribute leaking in styled-components 6.
+- **New components** — IELoading (animated IE loading GIF), Toolbar `onOutsideClick` prop.
 - **Committed `dist/`** so the fork is consumable as a git dependency without a build step.
 
 ## Stack
@@ -16,9 +18,9 @@ Modernized fork of [react95-io/React95](https://github.com/react95-io/React95) �
 - styled-components 5.x or 6.x (peer dependency)
 - TypeScript, Rollup (build), Jest (tests)
 
-## Components (33 active)
+## Components (34 active)
 
-Anchor, AppBar, Avatar, Button, Checkbox, ColorInput, Counter, DatePicker, Frame, GroupBox, Handle, Hourglass, MenuList, Monitor, NumberInput, ProgressBar, Radio, ScrollView, Select, Separator, Slider, Table, Tabs, TextInput, Toolbar, Tooltip, TreeView, Window (+ WindowContent, WindowHeader)
+Anchor, AppBar, Avatar, Button, Checkbox, ColorInput, Counter, DatePicker, Frame, GroupBox, Handle, Hourglass, IELoading, MenuList, Monitor, NumberInput, ProgressBar, Radio, ScrollView, Select, Separator, Slider, Table, Tabs, TextInput, Toolbar, Tooltip, TreeView, Window (+ WindowContent, WindowHeader)
 
 ## Legacy/Deprecated Components (12)
 

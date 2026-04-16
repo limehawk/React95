@@ -1,7 +1,7 @@
 {
   "name": "react95",
   "version": "0.0.0-development",
-  "description": "Refreshed Windows95 UI components for modern web apps - React95",
+  "description": "Modern port of React95 — Windows 95 themed React components for React 19 and styled-components 6",
   "keywords": [
     "react",
     "styled-components",
