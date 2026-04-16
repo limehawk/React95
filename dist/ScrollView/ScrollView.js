@@ -41,7 +41,7 @@ const StyledScrollView = styled__default["default"].div`
     border-right-color: ${({ theme }) => theme.borderLight};
     border-bottom-color: ${({ theme }) => theme.borderLight};
     pointer-events: none;
-    ${(props) => props.shadow && `box-shadow:${index.insetShadow};`}
+    ${(props) => props.$shadow && `box-shadow:${index.insetShadow};`}
   }
 `;
 const ScrollViewOuter = styled__default["default"](StyledScrollView)`
@@ -72,7 +72,7 @@ const ScrollView = React.forwardRef(({ children, shadow = true, style, ...otherP
   const scrollbar = useScrollbar.useScrollbar("vertical");
   return React__default["default"].createElement(
     ScrollViewOuter,
-    { ref, shadow, style, ...otherProps },
+    { ref, "$shadow": shadow, style, ...otherProps },
     React__default["default"].createElement(Content, { ref: scrollbar.contentRef, onScroll: scrollbar.handleScroll }, children),
     scrollbar.showScrollbar && React__default["default"].createElement(
       ScrollbarColumn,

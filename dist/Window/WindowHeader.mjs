@@ -9,7 +9,7 @@ const StyledWindowHeader = styled.div`
   padding-right: 3px;
   font-weight: bold;
   border: 2px solid ${({ theme }) => theme.material};
-  ${({ active }) => active === false ? css`
+  ${({ $active }) => $active === false ? css`
           background: ${({ theme }) => theme.headerNotActiveBackground};
           color: ${({ theme }) => theme.headerNotActiveText};
         ` : css`
@@ -25,7 +25,7 @@ const StyledWindowHeader = styled.div`
   }
 `;
 const WindowHeader = forwardRef(function WindowHeader2({ active = true, children, ...otherProps }, ref) {
-  return React__default.createElement(StyledWindowHeader, { active, ref, ...otherProps }, children);
+  return React__default.createElement(StyledWindowHeader, { "$active": active, ref, ...otherProps }, children);
 });
 WindowHeader.displayName = "WindowHeader";
 

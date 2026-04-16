@@ -27,7 +27,7 @@ const StyledButtonWrapper = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
 
-  ${({ variant }) => variant === "flat" ? css`
+  ${({ $variant }) => $variant === "flat" ? css`
           height: calc(${blockSizes.md} - 4px);
         ` : css`
           height: ${blockSizes.md};
@@ -38,7 +38,7 @@ const StyledButtonIcon = styled.span`
   width: 0px;
   height: 0px;
   display: inline-block;
-  ${({ invert }) => invert ? css`
+  ${({ $invert }) => $invert ? css`
           border-left: 4px solid transparent;
           border-right: 4px solid transparent;
           border-bottom: 4px solid ${({ theme }) => theme.materialText};
@@ -51,7 +51,7 @@ const StyledButtonIcon = styled.span`
     filter: drop-shadow(
       1px 1px 0px ${({ theme }) => theme.materialTextDisabledShadow}
     );
-    ${({ invert }) => invert ? css`
+    ${({ $invert }) => $invert ? css`
             border-bottom-color: ${({ theme }) => theme.materialTextDisabled};
           ` : css`
             border-top-color: ${({ theme }) => theme.materialTextDisabled};
@@ -95,11 +95,11 @@ const NumberInput = forwardRef(({ className, defaultValue, disabled = false, max
     React__default.createElement(TextInput, { value: valueDerived, variant, onChange: handleInputChange, disabled, type: "number", readOnly, ref, fullWidth: true, onBlur }),
     React__default.createElement(
       StyledButtonWrapper,
-      { variant },
+      { "$variant": variant },
       React__default.createElement(
         StyledButton,
         { "data-testid": "increment", variant: buttonVariant, disabled: disabled || readOnly, onClick: stepUp },
-        React__default.createElement(StyledButtonIcon, { invert: true })
+        React__default.createElement(StyledButtonIcon, { "$invert": true })
       ),
       React__default.createElement(
         StyledButton,

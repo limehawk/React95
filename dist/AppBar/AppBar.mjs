@@ -8,7 +8,7 @@ const StyledAppBar = styled.header`
 
   position: ${(props) => {
   var _a;
-  return (_a = props.position) !== null && _a !== void 0 ? _a : props.fixed ? "fixed" : "absolute";
+  return (_a = props.$position) !== null && _a !== void 0 ? _a : props.$fixed ? "fixed" : "absolute";
 }};
   top: 0;
   right: 0;
@@ -18,7 +18,7 @@ const StyledAppBar = styled.header`
   width: 100%;
 `;
 const AppBar = forwardRef(({ children, fixed = true, position = "fixed", ...otherProps }, ref) => {
-  return React__default.createElement(StyledAppBar, { fixed, position: fixed !== false ? position : void 0, ref, ...otherProps }, children);
+  return React__default.createElement(StyledAppBar, { "$fixed": fixed, "$position": fixed !== false ? position : void 0, ref, ...otherProps }, children);
 });
 AppBar.displayName = "AppBar";
 

@@ -95,13 +95,13 @@ const StyledDropdownButton = styled__default["default"](Button.StyledButton).att
   width: 30px;
   padding: 0;
   flex-shrink: 0;
-  ${({ variant = "default" }) => variant === "flat" ? styled.css`
+  ${({ $variant = "raised" }) => $variant === "flat" ? styled.css`
           height: 100%;
           margin-right: 0;
         ` : styled.css`
           height: 100%;
         `}
-  ${({ native = false, variant = "default" }) => native && (variant === "flat" ? `
+  ${({ native = false, $variant = "raised" }) => native && ($variant === "flat" ? `
       position: absolute;
       right: 0;
       height: 100%;
@@ -147,7 +147,7 @@ const StyledDropdownMenu = styled__default["default"].ul`
   z-index: 1;
   cursor: pointer;
   box-shadow: ${index.shadow};
-  ${({ variant = "default" }) => variant === "flat" ? styled.css`
+  ${({ $variant = "default" }) => $variant === "flat" ? styled.css`
           bottom: 2px;
           width: 100%;
           border: 2px solid ${({ theme }) => theme.flatDark};
@@ -156,7 +156,7 @@ const StyledDropdownMenu = styled__default["default"].ul`
           width: calc(100% - 2px);
           border: 2px solid ${({ theme }) => theme.borderDarkest};
         `}
-  ${({ variant = "default" }) => index.createScrollbars(variant)}
+  ${({ $variant = "default" }) => index.createScrollbars($variant)}
 `;
 const StyledDropdownMenuItem = styled__default["default"].li`
   box-sizing: border-box;
@@ -174,7 +174,7 @@ const StyledDropdownMenuItem = styled__default["default"].li`
   &:focus {
     outline: 0;
   }
-  ${({ active }) => active ? sharedHoverStyles : ""}
+  ${({ $active }) => $active ? sharedHoverStyles : ""}
   user-select: none;
 `;
 

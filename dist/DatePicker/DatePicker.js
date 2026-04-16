@@ -41,12 +41,12 @@ const DateItem = styled__default["default"].div`
 const DateItemContent = styled__default["default"].span`
   cursor: pointer;
 
-  background: ${({ active, theme }) => active ? theme.hoverBackground : "transparent"};
-  color: ${({ active, theme }) => active ? theme.canvasTextInvert : theme.canvasText};
+  background: ${({ $active, theme }) => $active ? theme.hoverBackground : "transparent"};
+  color: ${({ $active, theme }) => $active ? theme.canvasTextInvert : theme.canvasText};
 
   &:hover {
     border: 2px dashed
-      ${({ theme, active }) => active ? "none" : theme.materialDark};
+      ${({ theme, $active }) => $active ? "none" : theme.materialDark};
   }
 `;
 const months = [
@@ -106,7 +106,7 @@ const DatePicker = React.forwardRef(({ className, date: initialDate = new Date()
           { key: i, onClick: () => {
             handleDaySelect(dayNumber);
           } },
-          React__default["default"].createElement(DateItemContent, { active: dayNumber === itemDay }, dayNumber)
+          React__default["default"].createElement(DateItemContent, { "$active": dayNumber === itemDay }, dayNumber)
         );
       } else {
         items[i] = React__default["default"].createElement(DateItem, { key: i });

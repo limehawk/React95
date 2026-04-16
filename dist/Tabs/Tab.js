@@ -42,7 +42,7 @@ const StyledTab = styled__default["default"].button`
     ${index.focusOutline}
     outline-offset: -6px;
   }
-  ${(props) => props.selected && `
+  ${(props) => props.$selected && `
     z-index: 1;
     height: calc(${system.blockSizes.md} + 4px);
     top: -4px;
@@ -64,7 +64,7 @@ const StyledTab = styled__default["default"].button`
   }
 `;
 const Tab = React.memo(React.forwardRef(({ value, onClick, selected = false, children, ...otherProps }, ref) => {
-  return React__default["default"].createElement(StyledTab, { "aria-selected": selected, selected, onClick: (e) => onClick === null || onClick === void 0 ? void 0 : onClick(value, e), ref, role: "tab", ...otherProps }, children);
+  return React__default["default"].createElement(StyledTab, { "aria-selected": selected, "$selected": selected, onClick: (e) => onClick === null || onClick === void 0 ? void 0 : onClick(value, e), ref, role: "tab", ...otherProps }, children);
 }));
 Tab.displayName = "Tab";
 

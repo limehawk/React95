@@ -119,11 +119,11 @@ const createBorderStyles = ({ invert = false, style = "button" } = {}) => {
     border-top-color: ${({ theme }) => theme[borderStyles[style][borders.topLeftOuter]]};
     border-right-color: ${({ theme }) => theme[borderStyles[style][borders.bottomRightOuter]]};
     border-bottom-color: ${({ theme }) => theme[borderStyles[style][borders.bottomRightOuter]]};
-    box-shadow: ${({ theme, shadow: hasShadow }) => createInnerBorderWithShadow({
+    box-shadow: ${({ theme, $shadow }) => createInnerBorderWithShadow({
     theme,
     topLeftInner: borderStyles[style][borders.topLeftInner],
     bottomRightInner: borderStyles[style][borders.bottomRightInner],
-    hasShadow
+    hasShadow: $shadow
   })};
   `;
 };

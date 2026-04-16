@@ -9,7 +9,9 @@ export declare const useSelectCommon: <T>({ className, defaultValue, disabled, n
     setValue: (newValue: React.SetStateAction<T>) => void;
     wrapperProps: React.HTMLAttributes<HTMLDivElement>;
     DropdownButton: React.JSX.Element;
-    Wrapper: import("styled-components").StyledComponent<"div", any, Pick<import("../ScrollView/ScrollView").ScrollViewProps, "shadow"> & {
+    Wrapper: import("styled-components").StyledComponent<"div", any, {
+        $shadow?: boolean | undefined;
+    } & {
         $disabled?: boolean | undefined;
         native?: boolean | undefined;
         variant?: import("./Select.types").SelectVariants | undefined;

@@ -4,7 +4,9 @@ type ScrollViewProps = {
     children?: React.ReactNode;
     shadow?: boolean;
 } & React.HTMLAttributes<HTMLDivElement> & CommonStyledProps;
-export declare const StyledScrollView: import("styled-components").StyledComponent<"div", any, Pick<ScrollViewProps, "shadow">, never>;
+export declare const StyledScrollView: import("styled-components").StyledComponent<"div", any, {
+    $shadow?: boolean | undefined;
+}, never>;
 declare const ScrollView: React.ForwardRefExoticComponent<{
     children?: React.ReactNode;
     shadow?: boolean | undefined;

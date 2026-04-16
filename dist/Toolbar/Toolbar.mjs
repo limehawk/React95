@@ -5,10 +5,10 @@ const StyledToolbar = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  padding: ${(props) => props.noPadding ? "0" : "4px"};
+  padding: ${(props) => props.$noPadding ? "0" : "4px"};
 `;
 const Toolbar = forwardRef(function Toolbar2({ children, noPadding = false, ...otherProps }, ref) {
-  return React__default.createElement(StyledToolbar, { noPadding, ref, ...otherProps }, children);
+  return React__default.createElement(StyledToolbar, { "$noPadding": noPadding, ref, ...otherProps }, children);
 });
 Toolbar.displayName = "Toolbar";
 

@@ -27,7 +27,7 @@ const TreeWrapper = styled.ul`
   position: relative;
   isolation: isolate;
 
-  ${({ isRootLevel }) => isRootLevel && css`
+  ${({ $isRootLevel }) => $isRootLevel && css`
       &:before {
         content: '';
         position: absolute;
@@ -59,9 +59,9 @@ const TreeWrapper = styled.ul`
 `;
 const TreeItem = styled.li`
   position: relative;
-  padding-left: ${({ hasItems }) => !hasItems ? "13px" : "0"};
+  padding-left: ${({ $hasItems }) => !$hasItems ? "13px" : "0"};
 
-  ${({ isRootLevel }) => !isRootLevel ? css`
+  ${({ $isRootLevel }) => !$isRootLevel ? css`
           &:last-child {
             &:after {
               content: '';
@@ -171,7 +171,7 @@ function TreeBranch({ className, disabled, expanded, innerRef, level, select, se
     const onClickLeaf = !isNodeDisabled ? (event) => select(event, item) : preventDefault;
     const isSelected = selected === item.id;
     const icon = React__default.createElement(Icon, { "aria-hidden": true }, item.icon);
-    return React__default.createElement(TreeItem, { key: item.label, isRootLevel, role: "treeitem", "aria-expanded": isMenuShown, "aria-selected": isSelected, hasItems }, !hasItems ? React__default.createElement(
+    return React__default.createElement(TreeItem, { key: item.label, "$isRootLevel": isRootLevel, role: "treeitem", "aria-expanded": isMenuShown, "aria-selected": isSelected, "$hasItems": hasItems }, !hasItems ? React__default.createElement(
       TitleWithIcon,
       { as: "button", "$disabled": isNodeDisabled, onClick: onClickLeaf },
       icon,
@@ -192,7 +192,7 @@ function TreeBranch({ className, disabled, expanded, innerRef, level, select, se
       isMenuShown && React__default.createElement(TreeBranch, { className, disabled: isNodeDisabled, expanded, level: level + 1, select, selected, style, tree: (_b = item.items) !== null && _b !== void 0 ? _b : [] })
     ));
   }, [className, disabled, expanded, isRootLevel, level, select, selected, style]);
-  return React__default.createElement(TreeWrapper, { className: isRootLevel ? className : void 0, style: isRootLevel ? style : void 0, ref: isRootLevel ? innerRef : void 0, role: isRootLevel ? "tree" : "group", isRootLevel }, tree.map(renderLeaf));
+  return React__default.createElement(TreeWrapper, { className: isRootLevel ? className : void 0, style: isRootLevel ? style : void 0, ref: isRootLevel ? innerRef : void 0, role: isRootLevel ? "tree" : "group", "$isRootLevel": isRootLevel }, tree.map(renderLeaf));
 }
 function TreeInner({ className, defaultExpanded = [], defaultSelected, disabled = false, expanded, onNodeSelect, onNodeToggle, selected, style, tree = [] }, ref) {
   const [expandedInternal, setExpandedInternal] = useControlledOrUncontrolled({

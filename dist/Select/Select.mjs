@@ -13,7 +13,7 @@ function SelectInnerOption({ activateOptionIndex, active, index, onClick, option
     setRef(ref, index);
   }, [index, setRef]);
   const id = useId();
-  return React__default.createElement(StyledDropdownMenuItem, { active, "aria-selected": selected ? "true" : void 0, "data-value": option.value, id, onClick, onMouseEnter: handleOnMouseEnter, ref: handleSetRef, role: "option", tabIndex: 0 }, option.label);
+  return React__default.createElement(StyledDropdownMenuItem, { "$active": active, "aria-selected": selected ? "true" : void 0, "data-value": option.value, id, onClick, onMouseEnter: handleOnMouseEnter, ref: handleSetRef, role: "option", tabIndex: 0 }, option.label);
 }
 function SelectInner({ "aria-label": ariaLabel, "aria-labelledby": ariaLabelledBy, className, defaultValue, disabled = false, formatDisplay, inputProps, labelId, menuMaxHeight, name, onBlur, onChange, onClose, onFocus, onKeyDown, onMouseDown, onOpen, open: openProp, options: optionsProp, readOnly, shadow = true, style, variant = "default", value: valueProp, width = "auto", ...otherProps }, ref) {
   const { isEnabled, options, setValue, value, wrapperProps, DropdownButton, Wrapper } = useSelectCommon({
@@ -75,7 +75,7 @@ function SelectInner({ "aria-label": ariaLabel, "aria-labelledby": ariaLabelledB
   ]);
   return React__default.createElement(
     Wrapper,
-    { ...wrapperProps, "$disabled": disabled, ref: wrapperRef, shadow, style: { ...style, width } },
+    { ...wrapperProps, "$disabled": disabled, ref: wrapperRef, "$shadow": shadow, style: { ...style, width } },
     React__default.createElement("input", { name, ref: inputRef, type: "hidden", value: String(value), ...inputProps }),
     React__default.createElement(
       StyledInner,
@@ -83,7 +83,7 @@ function SelectInner({ "aria-label": ariaLabel, "aria-labelledby": ariaLabelledB
       React__default.createElement(StyledSelectContent, null, displayLabel),
       DropdownButton
     ),
-    isEnabled && open && React__default.createElement(StyledDropdownMenu, { id: dropdownMenuId, onKeyDown: handleDropdownKeyDown, ref: handleSetDropdownRef, role: "listbox", style: dropdownMenuStyle, tabIndex: 0, variant }, optionsContent)
+    isEnabled && open && React__default.createElement(StyledDropdownMenu, { id: dropdownMenuId, onKeyDown: handleDropdownKeyDown, ref: handleSetDropdownRef, role: "listbox", style: dropdownMenuStyle, tabIndex: 0, "$variant": variant }, optionsContent)
   );
 }
 const Select = forwardRef(SelectInner);

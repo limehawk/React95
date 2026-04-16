@@ -8,7 +8,7 @@ import { StyledScrollView } from '../ScrollView/ScrollView.mjs';
 const sharedWrapperStyles = css`
   display: flex;
   align-items: center;
-  width: ${({ fullWidth }) => fullWidth ? "100%" : "auto"};
+  width: ${({ $fullWidth }) => $fullWidth ? "100%" : "auto"};
   min-height: ${blockSizes.md};
 `;
 const Wrapper = styled(StyledScrollView).attrs({
@@ -36,7 +36,7 @@ const sharedInputStyles = css`
   min-height: 27px;
   font-family: inherit;
   color: ${({ theme }) => theme.canvasText};
-  ${({ disabled, variant }) => variant !== "flat" && disabled && createDisabledTextStyles()}
+  ${({ disabled, $variant }) => $variant !== "flat" && disabled && createDisabledTextStyles()}
 `;
 const StyledTextInput = styled.input`
   ${sharedInputStyles}
@@ -46,15 +46,15 @@ const StyledTextArea = styled.textarea`
   ${sharedInputStyles}
   padding: 8px;
   resize: none;
-  ${({ variant }) => createScrollbars(variant)}
+  ${({ $variant }) => createScrollbars($variant)}
 `;
 const TextInput = forwardRef(({ className, disabled = false, fullWidth, onChange = noOp, shadow = true, style, variant = "default", ...otherProps }, ref) => {
   const WrapperComponent = variant === "flat" ? FlatWrapper : Wrapper;
   const field = useMemo(() => {
     var _a;
-    return otherProps.multiline ? React__default.createElement(StyledTextArea, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, ref, variant, ...otherProps }) : React__default.createElement(StyledTextInput, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, ref, type: (_a = otherProps.type) !== null && _a !== void 0 ? _a : "text", variant, ...otherProps });
+    return otherProps.multiline ? React__default.createElement(StyledTextArea, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, ref, "$variant": variant, ...otherProps }) : React__default.createElement(StyledTextInput, { disabled, onChange: disabled ? void 0 : onChange, readOnly: disabled, ref, type: (_a = otherProps.type) !== null && _a !== void 0 ? _a : "text", "$variant": variant, ...otherProps });
   }, [disabled, onChange, otherProps, ref, variant]);
-  return React__default.createElement(WrapperComponent, { className, fullWidth, "$disabled": disabled, shadow, style }, field);
+  return React__default.createElement(WrapperComponent, { className, "$fullWidth": fullWidth, "$disabled": disabled, "$shadow": shadow, style }, field);
 });
 TextInput.displayName = "TextInput";
 

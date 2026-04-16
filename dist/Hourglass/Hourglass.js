@@ -14,8 +14,8 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 
 const StyledContainer = styled__default["default"].div`
   display: inline-block;
-  height: ${({ size }) => index.getSize(size)};
-  width: ${({ size }) => index.getSize(size)};
+  height: ${({ $size }) => index.getSize($size)};
+  width: ${({ $size }) => index.getSize($size)};
 `;
 const StyledHourglass = styled__default["default"].span`
   display: block;
@@ -27,7 +27,7 @@ const StyledHourglass = styled__default["default"].span`
 const Hourglass = React.forwardRef(({ size = 30, ...otherProps }, ref) => {
   return React__default["default"].createElement(
     StyledContainer,
-    { size, ref, ...otherProps },
+    { "$size": size, ref, ...otherProps },
     React__default["default"].createElement(StyledHourglass, null)
   );
 });

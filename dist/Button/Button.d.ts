@@ -17,7 +17,15 @@ type ButtonProps = {
     /** @deprecated Use `thin` */
     variant?: 'menu';
 }) & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled' | 'onClick' | 'onTouchStart' | 'type'> & CommonStyledProps;
-type StyledButtonProps = Pick<ButtonProps, 'active' | 'disabled' | 'fullWidth' | 'primary' | 'size' | 'square' | 'variant'>;
+type StyledButtonProps = {
+    $active?: boolean;
+    $disabled?: boolean;
+    $fullWidth?: boolean;
+    $primary?: boolean;
+    $size?: Sizes;
+    $square?: boolean;
+    $variant?: 'default' | 'raised' | 'flat' | 'thin' | 'menu';
+};
 export declare const StyledButton: import("styled-components").StyledComponent<"button", any, StyledButtonProps, never>;
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 export { Button, ButtonProps };

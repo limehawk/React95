@@ -41,13 +41,18 @@ const createFrameStyles = (variant: FrameProps['variant']) => {
   }
 };
 
-const StyledFrame = styled.div<Required<Pick<FrameProps, 'variant'>>>`
+type StyledFrameProps = {
+  $variant: FrameProps['variant'];
+  $shadow?: boolean;
+} & CommonStyledProps;
+
+const StyledFrame = styled.div<StyledFrameProps>`
   position: relative;
   font-size: 1rem;
-  ${({ variant }) => createFrameStyles(variant)}
-  ${({ variant }) =>
+  ${({ $variant }) => createFrameStyles($variant)}
+  ${({ $variant }) =>
     createBoxStyles(
-      variant === 'field'
+      $variant === 'field'
         ? { background: 'canvas', color: 'canvasText' }
         : undefined
     )}
@@ -56,7 +61,7 @@ const StyledFrame = styled.div<Required<Pick<FrameProps, 'variant'>>>`
 const Frame = memo(forwardRef<HTMLDivElement, FrameProps>(
   ({ children, shadow = false, variant = 'window', ...otherProps }, ref) => {
     return (
-      <StyledFrame ref={ref} shadow={shadow} variant={variant} {...otherProps}>
+      <StyledFrame ref={ref} $shadow={shadow} $variant={variant} {...otherProps}>
         {children}
       </StyledFrame>
     );

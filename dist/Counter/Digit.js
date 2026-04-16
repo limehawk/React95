@@ -17,10 +17,10 @@ const DigitWrapper = styled__default["default"].div`
   --react95-digit-secondary-color: #740201;
   --react95-digit-bg-color: #000000;
 
-  ${({ pixelSize }) => styled.css`
-    width: ${11 * pixelSize}px;
-    height: ${21 * pixelSize}px;
-    margin: ${pixelSize}px;
+  ${({ $pixelSize }) => styled.css`
+    width: ${11 * $pixelSize}px;
+    height: ${21 * $pixelSize}px;
+    margin: ${$pixelSize}px;
 
     span,
     span:before,
@@ -40,39 +40,39 @@ const DigitWrapper = styled__default["default"].div`
       ${index.createHatchedBackground({
   mainColor: "var(--react95-digit-bg-color)",
   secondaryColor: "var(--react95-digit-secondary-color)",
-  pixelSize
+  pixelSize: $pixelSize
 })}
     }
 
     span.horizontal,
     span.horizontal:before,
     span.horizontal:after {
-      height: ${pixelSize}px;
-      border-left: ${pixelSize}px solid var(--react95-digit-bg-color);
-      border-right: ${pixelSize}px solid var(--react95-digit-bg-color);
+      height: ${$pixelSize}px;
+      border-left: ${$pixelSize}px solid var(--react95-digit-bg-color);
+      border-right: ${$pixelSize}px solid var(--react95-digit-bg-color);
     }
     span.horizontal.active,
     span.horizontal.active:before,
     span.horizontal.active:after {
-      height: ${pixelSize}px;
-      border-left: ${pixelSize}px solid var(--react95-digit-primary-color);
-      border-right: ${pixelSize}px solid var(--react95-digit-primary-color);
+      height: ${$pixelSize}px;
+      border-left: ${$pixelSize}px solid var(--react95-digit-primary-color);
+      border-right: ${$pixelSize}px solid var(--react95-digit-primary-color);
     }
     span.horizontal {
-      left: ${pixelSize}px;
-      width: ${9 * pixelSize}px;
+      left: ${$pixelSize}px;
+      width: ${9 * $pixelSize}px;
     }
     span.horizontal:before {
       content: '';
       width: 100%;
-      top: ${pixelSize}px;
+      top: ${$pixelSize}px;
       left: ${0}px;
     }
     span.horizontal:after {
       content: '';
-      width: calc(100% - ${pixelSize * 2}px);
-      top: ${2 * pixelSize}px;
-      left: ${pixelSize}px;
+      width: calc(100% - ${$pixelSize * 2}px);
+      top: ${2 * $pixelSize}px;
+      left: ${$pixelSize}px;
     }
     span.horizontal.top {
       top: 0;
@@ -85,21 +85,21 @@ const DigitWrapper = styled__default["default"].div`
     span.center,
     span.center:before,
     span.center:after {
-      height: ${pixelSize}px;
-      border-left: ${pixelSize}px solid var(--react95-digit-bg-color);
-      border-right: ${pixelSize}px solid var(--react95-digit-bg-color);
+      height: ${$pixelSize}px;
+      border-left: ${$pixelSize}px solid var(--react95-digit-bg-color);
+      border-right: ${$pixelSize}px solid var(--react95-digit-bg-color);
     }
     span.center.active,
     span.center.active:before,
     span.center.active:after {
-      border-left: ${pixelSize}px solid var(--react95-digit-primary-color);
-      border-right: ${pixelSize}px solid var(--react95-digit-primary-color);
+      border-left: ${$pixelSize}px solid var(--react95-digit-primary-color);
+      border-right: ${$pixelSize}px solid var(--react95-digit-primary-color);
     }
     span.center {
       top: 50%;
       transform: translateY(-50%);
-      left: ${pixelSize}px;
-      width: ${9 * pixelSize}px;
+      left: ${$pixelSize}px;
+      width: ${9 * $pixelSize}px;
     }
     span.center:before,
     span.center:after {
@@ -107,21 +107,21 @@ const DigitWrapper = styled__default["default"].div`
       width: 100%;
     }
     span.center:before {
-      top: ${pixelSize}px;
+      top: ${$pixelSize}px;
     }
     span.center:after {
-      bottom: ${pixelSize}px;
+      bottom: ${$pixelSize}px;
     }
 
     span.vertical,
     span.vertical:before,
     span.vertical:after {
-      width: ${pixelSize}px;
-      border-top: ${pixelSize}px solid var(--react95-digit-bg-color);
-      border-bottom: ${pixelSize}px solid var(--react95-digit-bg-color);
+      width: ${$pixelSize}px;
+      border-top: ${$pixelSize}px solid var(--react95-digit-bg-color);
+      border-bottom: ${$pixelSize}px solid var(--react95-digit-bg-color);
     }
     span.vertical {
-      height: ${11 * pixelSize}px;
+      height: ${11 * $pixelSize}px;
     }
     span.vertical.left {
       left: 0;
@@ -140,13 +140,13 @@ const DigitWrapper = styled__default["default"].div`
       content: '';
       height: 100%;
       top: ${0}px;
-      left: ${pixelSize}px;
+      left: ${$pixelSize}px;
     }
     span.vertical:after {
       content: '';
-      height: calc(100% - ${pixelSize * 2}px);
-      top: ${pixelSize}px;
-      left: ${pixelSize * 2}px;
+      height: calc(100% - ${$pixelSize * 2}px);
+      top: ${$pixelSize}px;
+      left: ${$pixelSize * 2}px;
     }
   `}
 `;
@@ -173,7 +173,7 @@ const digitActiveSegments = [
 ];
 function Digit({ digit = 0, pixelSize = 2, ...otherProps }) {
   const segmentClasses = digitActiveSegments[Number(digit)].map((isActive, i) => isActive ? `${segments[i]} active` : segments[i]);
-  return React__default["default"].createElement(DigitWrapper, { pixelSize, ...otherProps }, segmentClasses.map((className, i) => React__default["default"].createElement("span", { className, key: i })));
+  return React__default["default"].createElement(DigitWrapper, { "$pixelSize": pixelSize, ...otherProps }, segmentClasses.map((className, i) => React__default["default"].createElement("span", { className, key: i })));
 }
 
 exports.Digit = Digit;

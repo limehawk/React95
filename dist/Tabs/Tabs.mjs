@@ -6,7 +6,7 @@ export { TabBody } from './TabBody.mjs';
 
 const StyledTabs = styled.div`
   position: relative;
-  ${({ isMultiRow, theme }) => isMultiRow && `
+  ${({ $isMultiRow, theme }) => $isMultiRow && `
   button {
     flex-grow: 1;
   }
@@ -63,7 +63,7 @@ const Tabs = forwardRef(({ value, onChange = noOp, children, rows = 1, ...otherP
     tabRows.push(tabRows.splice(currentlySelectedRowIndex, 1)[0]);
     return tabRows;
   }, [children, onChange, rows, value]);
-  return React__default.createElement(StyledTabs, { ...otherProps, isMultiRow: rows > 1, role: "tablist", ref }, tabRowsToRender.map((row) => React__default.createElement(Row, { key: row.key }, row.tabs)));
+  return React__default.createElement(StyledTabs, { ...otherProps, "$isMultiRow": rows > 1, role: "tablist", ref }, tabRowsToRender.map((row) => React__default.createElement(Row, { key: row.key }, row.tabs)));
 });
 Tabs.displayName = "Tabs";
 

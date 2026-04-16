@@ -87,13 +87,13 @@ const StyledDropdownButton = styled(StyledButton).attrs(() => ({
   width: 30px;
   padding: 0;
   flex-shrink: 0;
-  ${({ variant = "default" }) => variant === "flat" ? css`
+  ${({ $variant = "raised" }) => $variant === "flat" ? css`
           height: 100%;
           margin-right: 0;
         ` : css`
           height: 100%;
         `}
-  ${({ native = false, variant = "default" }) => native && (variant === "flat" ? `
+  ${({ native = false, $variant = "raised" }) => native && ($variant === "flat" ? `
       position: absolute;
       right: 0;
       height: 100%;
@@ -139,7 +139,7 @@ const StyledDropdownMenu = styled.ul`
   z-index: 1;
   cursor: pointer;
   box-shadow: ${shadow};
-  ${({ variant = "default" }) => variant === "flat" ? css`
+  ${({ $variant = "default" }) => $variant === "flat" ? css`
           bottom: 2px;
           width: 100%;
           border: 2px solid ${({ theme }) => theme.flatDark};
@@ -148,7 +148,7 @@ const StyledDropdownMenu = styled.ul`
           width: calc(100% - 2px);
           border: 2px solid ${({ theme }) => theme.borderDarkest};
         `}
-  ${({ variant = "default" }) => createScrollbars(variant)}
+  ${({ $variant = "default" }) => createScrollbars($variant)}
 `;
 const StyledDropdownMenuItem = styled.li`
   box-sizing: border-box;
@@ -166,7 +166,7 @@ const StyledDropdownMenuItem = styled.li`
   &:focus {
     outline: 0;
   }
-  ${({ active }) => active ? sharedHoverStyles : ""}
+  ${({ $active }) => $active ? sharedHoverStyles : ""}
   user-select: none;
 `;
 

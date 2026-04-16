@@ -69,29 +69,29 @@ const Wrapper = styled__default["default"].div`
     top: -2px;
     left: -15px;
     width: calc(100% + 30px);
-    height: ${({ hasMarks }) => hasMarks ? "41px" : "39px"};
-    ${({ isFocused, theme }) => isFocused && `
+    height: ${({ $hasMarks }) => $hasMarks ? "41px" : "39px"};
+    ${({ $isFocused, theme }) => $isFocused && `
         outline: 2px dotted ${theme.materialText};
         `}
   }
 
-  ${({ orientation, size }) => orientation === "vertical" ? styled.css`
-          height: ${size};
+  ${({ $orientation, $size }) => $orientation === "vertical" ? styled.css`
+          height: ${$size};
           margin-right: 1.5rem;
           &:before {
             left: -6px;
             top: -15px;
             height: calc(100% + 30px);
-            width: ${({ hasMarks }) => hasMarks ? "41px" : "39px"};
+            width: ${({ $hasMarks }) => $hasMarks ? "41px" : "39px"};
           }
         ` : styled.css`
-          width: ${size};
+          width: ${$size};
           margin-bottom: 1.5rem;
           &:before {
             top: -2px;
             left: -15px;
             width: calc(100% + 30px);
-            height: ${({ hasMarks }) => hasMarks ? "41px" : "39px"};
+            height: ${({ $hasMarks }) => $hasMarks ? "41px" : "39px"};
           }
         `}
 
@@ -99,7 +99,7 @@ const Wrapper = styled__default["default"].div`
 `;
 const sharedGrooveStyles = () => styled.css`
   position: absolute;
-  ${({ orientation }) => orientation === "vertical" ? styled.css`
+  ${({ $orientation }) => $orientation === "vertical" ? styled.css`
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
@@ -132,7 +132,7 @@ const StyledFlatGroove = styled__default["default"](ScrollView.StyledScrollView)
 `;
 const Thumb = styled__default["default"].span`
   position: relative;
-  ${({ orientation }) => orientation === "vertical" ? styled.css`
+  ${({ $orientation }) => $orientation === "vertical" ? styled.css`
           width: 32px;
           height: 18px;
           right: 2px;
@@ -143,7 +143,7 @@ const Thumb = styled__default["default"].span`
           top: 2px;
           transform: translateX(-50%);
         `}
-  ${({ variant }) => variant === "flat" ? styled.css`
+  ${({ $variant }) => $variant === "flat" ? styled.css`
           ${index.createFlatBoxStyles()}
           outline: 2px solid ${({ theme }) => theme.flatDark};
           background: ${({ theme }) => theme.flatLight};
@@ -164,7 +164,7 @@ const Tick = styled__default["default"].span`
   display: inline-block;
   position: absolute;
 
-  ${({ orientation }) => orientation === "vertical" ? styled.css`
+  ${({ $orientation }) => $orientation === "vertical" ? styled.css`
           right: ${-tickHeight - 2}px;
           bottom: 0px;
           transform: translateY(1px);
@@ -192,7 +192,7 @@ const Mark = styled__default["default"].div`
   line-height: 1;
   font-size: 0.875rem;
 
-  ${({ orientation }) => orientation === "vertical" ? styled.css`
+  ${({ $orientation }) => $orientation === "vertical" ? styled.css`
           transform: translate(${tickHeight + 2}px, ${tickHeight + 1}px);
         ` : styled.css`
           transform: translate(-0.5ch, calc(100% + 2px));
@@ -377,15 +377,15 @@ const Slider = React.forwardRef(({ defaultValue, disabled = false, marks: marksP
   }, [handleTouchEnd, handleTouchMove, handleTouchStart]);
   return React__default["default"].createElement(
     Wrapper,
-    { "$disabled": disabled, hasMarks: Boolean(marks.length), isFocused: focusVisible, onMouseDown: handleMouseDown, orientation, ref: handleRef, size: index$1.getSize(size), ...otherProps },
+    { "$disabled": disabled, "$hasMarks": Boolean(marks.length), "$isFocused": focusVisible, onMouseDown: handleMouseDown, "$orientation": orientation, ref: handleRef, "$size": index$1.getSize(size), ...otherProps },
     React__default["default"].createElement("input", { disabled, name, type: "hidden", value: valueDerived !== null && valueDerived !== void 0 ? valueDerived : 0 }),
-    marks && marks.map((m) => React__default["default"].createElement(Tick, { "$disabled": disabled, "data-testid": "tick", key: m.value / (max - min) * 100, orientation, style: {
+    marks && marks.map((m) => React__default["default"].createElement(Tick, { "$disabled": disabled, "data-testid": "tick", key: m.value / (max - min) * 100, "$orientation": orientation, style: {
       [vertical ? "bottom" : "left"]: `${(m.value - min) / (max - min) * 100}%`
-    } }, m.label && React__default["default"].createElement(Mark, { "aria-hidden": true, "data-testid": "mark", orientation }, m.label))),
-    React__default["default"].createElement(Groove, { orientation, variant }),
-    React__default["default"].createElement(Thumb, { "$disabled": disabled, "aria-disabled": disabled ? true : void 0, "aria-orientation": orientation, "aria-valuemax": max, "aria-valuemin": min, "aria-valuenow": valueDerived, onBlur: handleBlur, onFocus: handleFocus, onKeyDown: handleKeyDown, orientation, ref: thumbRef, role: "slider", style: {
+    } }, m.label && React__default["default"].createElement(Mark, { "aria-hidden": true, "data-testid": "mark", "$orientation": orientation }, m.label))),
+    React__default["default"].createElement(Groove, { "$orientation": orientation, "$variant": variant }),
+    React__default["default"].createElement(Thumb, { "$disabled": disabled, "aria-disabled": disabled ? true : void 0, "aria-orientation": orientation, "aria-valuemax": max, "aria-valuemin": min, "aria-valuenow": valueDerived, onBlur: handleBlur, onFocus: handleFocus, onKeyDown: handleKeyDown, "$orientation": orientation, ref: thumbRef, role: "slider", style: {
       [vertical ? "bottom" : "left"]: `${(vertical ? -100 : 0) + 100 * (valueDerived - min) / (max - min)}%`
-    }, tabIndex: disabled ? void 0 : 0, variant })
+    }, tabIndex: disabled ? void 0 : 0, "$variant": variant })
   );
 });
 Slider.displayName = "Slider";

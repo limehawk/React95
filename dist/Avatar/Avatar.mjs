@@ -6,20 +6,20 @@ const StyledAvatar = styled.div`
   display: inline-block;
   box-sizing: border-box;
   object-fit: contain;
-  ${({ size }) => `
-    height: ${size};
-    width: ${size};
+  ${({ $size }) => `
+    height: ${$size};
+    width: ${$size};
     `}
-  border-radius: ${({ square }) => square ? 0 : "50%"};
+  border-radius: ${({ $square }) => $square ? 0 : "50%"};
   overflow: hidden;
-  ${({ noBorder, theme }) => !noBorder && `
+  ${({ $noBorder, theme }) => !$noBorder && `
     border-top: 2px solid ${theme.borderDark};
     border-left: 2px solid ${theme.borderDark};
     border-bottom: 2px solid ${theme.borderLightest};
     border-right: 2px solid ${theme.borderLightest};
     background: ${theme.material};
   `}
-  ${({ src }) => !src && `
+  ${({ $src }) => !$src && `
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -34,7 +34,7 @@ const StyledAvatarImg = styled.img`
   height: 100%;
 `;
 const Avatar = forwardRef(({ alt = "", children, noBorder = false, size = 35, square = false, src, ...otherProps }, ref) => {
-  return React__default.createElement(StyledAvatar, { noBorder, ref, size: getSize(size), square, src, ...otherProps }, src ? React__default.createElement(StyledAvatarImg, { src, alt }) : children);
+  return React__default.createElement(StyledAvatar, { "$noBorder": noBorder, ref, "$size": getSize(size), "$square": square, "$src": src, ...otherProps }, src ? React__default.createElement(StyledAvatarImg, { src, alt }) : children);
 });
 Avatar.displayName = "Avatar";
 

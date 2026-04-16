@@ -76,7 +76,7 @@ const ChevronIcon = styled.span`
     content: '';
     box-sizing: border-box;
     position: absolute;
-    top: ${({ variant }) => variant === "flat" ? "6px" : "8px"};
+    top: ${({ $variant }) => $variant === "flat" ? "6px" : "8px"};
     right: 8px;
     width: 16px;
     height: 19px;
@@ -97,11 +97,11 @@ const ColorInput = forwardRef(({ value, defaultValue, onChange = noOp, disabled 
   };
   return React__default.createElement(
     Trigger,
-    { disabled, as: "div", variant, size: "md" },
+    { "$disabled": disabled, as: "div", "$variant": variant, "$size": "md" },
     React__default.createElement(StyledColorInput, { onChange: handleChange, readOnly: disabled, disabled, value: valueDerived !== null && valueDerived !== void 0 ? valueDerived : "#008080", type: "color", ref, ...otherProps }),
     React__default.createElement(ColorPreview, { "$disabled": disabled, color: valueDerived !== null && valueDerived !== void 0 ? valueDerived : "#008080", role: "presentation" }),
     variant === "default" && React__default.createElement(StyledSeparator, { orientation: "vertical" }),
-    React__default.createElement(ChevronIcon, { "$disabled": disabled, variant })
+    React__default.createElement(ChevronIcon, { "$disabled": disabled, "$variant": variant })
   );
 });
 ColorInput.displayName = "ColorInput";

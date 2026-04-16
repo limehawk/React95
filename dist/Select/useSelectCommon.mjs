@@ -19,7 +19,7 @@ const useSelectCommon = ({ className, defaultValue, disabled, native, onChange, 
   }), [className, style, width]);
   const DropdownButton = useMemo(() => React__default.createElement(
     StyledDropdownButton,
-    { as: "div", "data-testid": "select-button", "$disabled": disabled, native, tabIndex: -1, variant: variant === "flat" ? "flat" : "raised" },
+    { as: "div", "data-testid": "select-button", "$disabled": disabled, native, tabIndex: -1, "$variant": variant === "flat" ? "flat" : "raised" },
     React__default.createElement(StyledDropdownIcon, { "data-testid": "select-icon", "$disabled": disabled })
   ), [disabled, native, variant]);
   const Wrapper = useMemo(() => variant === "flat" ? StyledFlatSelectWrapper : StyledSelectWrapper, [variant]);

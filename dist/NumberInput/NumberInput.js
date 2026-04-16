@@ -36,7 +36,7 @@ const StyledButtonWrapper = styled__default["default"].div`
   flex-wrap: nowrap;
   justify-content: space-between;
 
-  ${({ variant }) => variant === "flat" ? styled.css`
+  ${({ $variant }) => $variant === "flat" ? styled.css`
           height: calc(${system.blockSizes.md} - 4px);
         ` : styled.css`
           height: ${system.blockSizes.md};
@@ -47,7 +47,7 @@ const StyledButtonIcon = styled__default["default"].span`
   width: 0px;
   height: 0px;
   display: inline-block;
-  ${({ invert }) => invert ? styled.css`
+  ${({ $invert }) => $invert ? styled.css`
           border-left: 4px solid transparent;
           border-right: 4px solid transparent;
           border-bottom: 4px solid ${({ theme }) => theme.materialText};
@@ -60,7 +60,7 @@ const StyledButtonIcon = styled__default["default"].span`
     filter: drop-shadow(
       1px 1px 0px ${({ theme }) => theme.materialTextDisabledShadow}
     );
-    ${({ invert }) => invert ? styled.css`
+    ${({ $invert }) => $invert ? styled.css`
             border-bottom-color: ${({ theme }) => theme.materialTextDisabled};
           ` : styled.css`
             border-top-color: ${({ theme }) => theme.materialTextDisabled};
@@ -104,11 +104,11 @@ const NumberInput = React.forwardRef(({ className, defaultValue, disabled = fals
     React__default["default"].createElement(TextInput.TextInput, { value: valueDerived, variant, onChange: handleInputChange, disabled, type: "number", readOnly, ref, fullWidth: true, onBlur }),
     React__default["default"].createElement(
       StyledButtonWrapper,
-      { variant },
+      { "$variant": variant },
       React__default["default"].createElement(
         StyledButton,
         { "data-testid": "increment", variant: buttonVariant, disabled: disabled || readOnly, onClick: stepUp },
-        React__default["default"].createElement(StyledButtonIcon, { invert: true })
+        React__default["default"].createElement(StyledButtonIcon, { "$invert": true })
       ),
       React__default["default"].createElement(
         StyledButton,

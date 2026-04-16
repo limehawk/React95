@@ -18,15 +18,15 @@ const commonButtonStyles = styled.css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: ${({ size = "md" }) => system.blockSizes[size]};
-  width: ${({ fullWidth, size = "md", square }) => fullWidth ? "100%" : square ? system.blockSizes[size] : "auto"};
-  padding: ${({ square }) => square ? 0 : `0 10px`};
+  height: ${({ $size = "md" }) => system.blockSizes[$size]};
+  width: ${({ $fullWidth, $size = "md", $square }) => $fullWidth ? "100%" : $square ? system.blockSizes[$size] : "auto"};
+  padding: ${({ $square }) => $square ? 0 : `0 10px`};
   font-size: 1rem;
   user-select: none;
   &:active {
-    padding-top: ${({ disabled }) => !disabled && "2px"};
+    padding-top: ${({ $disabled }) => !$disabled && "2px"};
   }
-  padding-top: ${({ active, disabled }) => active && !disabled && "2px"};
+  padding-top: ${({ $active, $disabled }) => $active && !$disabled && "2px"};
   &:after {
     content: '';
     position: absolute;
@@ -42,9 +42,9 @@ const commonButtonStyles = styled.css`
   font-family: inherit;
 `;
 const StyledButton = styled__default["default"].button`
-  ${({ active, disabled, primary, theme, variant }) => variant === "flat" ? styled.css`
+  ${({ $active, $disabled, $primary, theme, $variant }) => $variant === "flat" ? styled.css`
           ${index.createFlatBoxStyles()}
-          ${primary ? `
+          ${$primary ? `
           border: 2px solid ${theme.checkmark};
             outline: 2px solid ${theme.flatDark};
             outline-offset: -4px;
@@ -54,74 +54,74 @@ const StyledButton = styled__default["default"].button`
             outline-offset: -4px;
           `}
           &:focus:after, &:active:after {
-            ${!active && !disabled && index.focusOutline}
+            ${!$active && !$disabled && index.focusOutline}
             outline-offset: -4px;
           }
-        ` : variant === "menu" || variant === "thin" ? styled.css`
-          ${index.createBoxStyles()};
-          border: 2px solid transparent;
-          &:hover,
-          &:focus {
-            ${!disabled && !active && index.createBorderStyles({ style: "buttonThin" })}
-          }
-          &:active {
-            ${!disabled && index.createBorderStyles({ style: "buttonThinPressed" })}
-          }
-          ${active && index.createBorderStyles({ style: "buttonThinPressed" })}
-          ${disabled && index.createDisabledTextStyles()}
-        ` : styled.css`
-          ${index.createBoxStyles()};
-          border: none;
-          ${disabled && index.createDisabledTextStyles()}
-          ${active ? index.createHatchedBackground({
+        ` : $variant === "menu" || $variant === "thin" ? styled.css`
+            ${index.createBoxStyles()};
+            border: 2px solid transparent;
+            &:hover,
+            &:focus {
+              ${!$disabled && !$active && index.createBorderStyles({ style: "buttonThin" })}
+            }
+            &:active {
+              ${!$disabled && index.createBorderStyles({ style: "buttonThinPressed" })}
+            }
+            ${$active && index.createBorderStyles({ style: "buttonThinPressed" })}
+            ${$disabled && index.createDisabledTextStyles()}
+          ` : styled.css`
+            ${index.createBoxStyles()};
+            border: none;
+            ${$disabled && index.createDisabledTextStyles()}
+            ${$active ? index.createHatchedBackground({
   mainColor: theme.material,
   secondaryColor: theme.borderLightest
 }) : ""}
           &:before {
-            box-sizing: border-box;
-            content: '';
-            position: absolute;
-            ${primary ? styled.css`
-                  left: 2px;
-                  top: 2px;
-                  width: calc(100% - 4px);
-                  height: calc(100% - 4px);
-                  outline: 2px solid ${theme.borderDarkest};
-                ` : styled.css`
-                  left: 0;
-                  top: 0;
-                  width: 100%;
-                  height: 100%;
-                `}
+              box-sizing: border-box;
+              content: '';
+              position: absolute;
+              ${$primary ? styled.css`
+                    left: 2px;
+                    top: 2px;
+                    width: calc(100% - 4px);
+                    height: calc(100% - 4px);
+                    outline: 2px solid ${theme.borderDarkest};
+                  ` : styled.css`
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                  `}
 
-            ${active ? index.createBorderStyles({
-  style: variant === "raised" ? "window" : "button",
+              ${$active ? index.createBorderStyles({
+  style: $variant === "raised" ? "window" : "button",
   invert: true
 }) : index.createBorderStyles({
-  style: variant === "raised" ? "window" : "button",
+  style: $variant === "raised" ? "window" : "button",
   invert: false
 })}
-          }
-          &:active:before {
-            ${!disabled && index.createBorderStyles({
-  style: variant === "raised" ? "window" : "button",
+            }
+            &:active:before {
+              ${!$disabled && index.createBorderStyles({
+  style: $variant === "raised" ? "window" : "button",
   invert: true
 })}
-          }
-          &:focus:after,
-          &:active:after {
-            ${!disabled && index.focusOutline}
-            outline-offset: -8px;
-          }
-          &:active:focus:after,
-          &:active:after {
-            top: ${active ? "0" : "1px"};
-          }
-        `}
+            }
+            &:focus:after,
+            &:active:after {
+              ${!$disabled && index.focusOutline}
+              outline-offset: -8px;
+            }
+            &:active:focus:after,
+            &:active:after {
+              top: ${$active ? "0" : "1px"};
+            }
+          `}
   ${commonButtonStyles}
 `;
 const Button = React.forwardRef(({ onClick, disabled = false, children, type = "button", fullWidth = false, size = "md", square = false, active = false, onTouchStart = index$1.noOp, primary = false, variant = "default", ...otherProps }, ref) => {
-  return React__default["default"].createElement(StyledButton, { active, disabled, "$disabled": disabled, fullWidth, onClick: disabled ? void 0 : onClick, onTouchStart, primary, ref, size, square, type, variant, ...otherProps }, children);
+  return React__default["default"].createElement(StyledButton, { "$active": active, disabled, "$disabled": disabled, "$fullWidth": fullWidth, onClick: disabled ? void 0 : onClick, onTouchStart, "$primary": primary, ref, "$size": size, "$square": square, type, "$variant": variant, ...otherProps }, children);
 });
 Button.displayName = "Button";
 

@@ -41,7 +41,7 @@ const ResizeHandle = styled.span`
 const Window = forwardRef(({ children, resizable = false, resizeRef, shadow = true, ...otherProps }, ref) => {
   return React__default.createElement(
     StyledWindow,
-    { ref, shadow, ...otherProps },
+    { ref, "$shadow": shadow, ...otherProps },
     children,
     resizable && React__default.createElement(ResizeHandle, { "data-testid": "resizeHandle", ref: resizeRef })
   );

@@ -5,8 +5,8 @@ import base64hourglass from './base64hourglass.mjs';
 
 const StyledContainer = styled.div`
   display: inline-block;
-  height: ${({ size }) => getSize(size)};
-  width: ${({ size }) => getSize(size)};
+  height: ${({ $size }) => getSize($size)};
+  width: ${({ $size }) => getSize($size)};
 `;
 const StyledHourglass = styled.span`
   display: block;
@@ -18,7 +18,7 @@ const StyledHourglass = styled.span`
 const Hourglass = forwardRef(({ size = 30, ...otherProps }, ref) => {
   return React__default.createElement(
     StyledContainer,
-    { size, ref, ...otherProps },
+    { "$size": size, ref, ...otherProps },
     React__default.createElement(StyledHourglass, null)
   );
 });

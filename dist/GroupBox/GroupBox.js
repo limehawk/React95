@@ -14,12 +14,12 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 const StyledFieldset = styled__default["default"].fieldset`
   position: relative;
   border: 2px solid
-    ${({ theme, variant }) => variant === "flat" ? theme.flatDark : theme.borderLightest};
+    ${({ theme, $variant }) => $variant === "flat" ? theme.flatDark : theme.borderLightest};
   padding: 16px;
   margin-top: 8px;
   font-size: 1rem;
   color: ${({ theme }) => theme.materialText};
-  ${({ variant }) => variant !== "flat" && styled.css`
+  ${({ $variant }) => $variant !== "flat" && styled.css`
       box-shadow: -1px -1px 0 1px ${({ theme }) => theme.borderDark},
         inset -1px -1px 0 1px ${({ theme }) => theme.borderDark};
     `}
@@ -34,13 +34,13 @@ const StyledLegend = styled__default["default"].legend`
   padding: 0 8px;
 
   font-size: 1rem;
-  background: ${({ theme, variant }) => variant === "flat" ? theme.canvas : theme.material};
+  background: ${({ theme, $variant }) => $variant === "flat" ? theme.canvas : theme.material};
 `;
 const GroupBox = React.forwardRef(({ label, disabled = false, variant = "default", children, ...otherProps }, ref) => {
   return React__default["default"].createElement(
     StyledFieldset,
-    { "aria-disabled": disabled, "$disabled": disabled, variant, ref, ...otherProps },
-    label && React__default["default"].createElement(StyledLegend, { variant }, label),
+    { "aria-disabled": disabled, "$disabled": disabled, "$variant": variant, ref, ...otherProps },
+    label && React__default["default"].createElement(StyledLegend, { "$variant": variant }, label),
     children
   );
 });

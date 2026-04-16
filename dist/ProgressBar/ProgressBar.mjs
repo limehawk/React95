@@ -46,8 +46,8 @@ const BlueBar = styled.div`
   background: ${({ theme }) => theme.progress};
   clip-path: polygon(
     0 0,
-    ${({ value = 0 }) => value}% 0,
-    ${({ value = 0 }) => value}% 100%,
+    ${({ $value = 0 }) => $value}% 0,
+    ${({ $value = 0 }) => $value}% 100%,
     0 100%
   );
   transition: 0.4s linear clip-path;
@@ -91,12 +91,12 @@ const ProgressBar = forwardRef(({ hideValue = false, shadow = true, value, varia
   }, [updateTilesNumber]);
   return React__default.createElement(
     Wrapper,
-    { "aria-valuenow": value !== void 0 ? Math.round(value) : void 0, ref, role: "progressbar", variant, ...otherProps },
-    React__default.createElement(ProgressCutout, { variant, shadow }, variant === "default" ? React__default.createElement(
+    { "aria-valuenow": value !== void 0 ? Math.round(value) : void 0, ref, role: "progressbar", "$variant": variant, ...otherProps },
+    React__default.createElement(ProgressCutout, { "$variant": variant, "$shadow": shadow }, variant === "default" ? React__default.createElement(
       React__default.Fragment,
       null,
       React__default.createElement(WhiteBar, { "data-testid": "defaultProgress1" }, displayValue),
-      React__default.createElement(BlueBar, { "data-testid": "defaultProgress2", value }, displayValue)
+      React__default.createElement(BlueBar, { "data-testid": "defaultProgress2", "$value": value }, displayValue)
     ) : React__default.createElement(TilesWrapper, { ref: tilesWrapperRef, "data-testid": "tileProgress" }, tiles.map((_, index) => React__default.createElement(Tile, { key: index }))))
   );
 });

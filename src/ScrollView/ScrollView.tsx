@@ -16,7 +16,7 @@ type ScrollViewProps = {
 // IMPORTANT: StyledScrollView is used as a base styled-component by
 // Checkbox, Radio, TextInput, Select, Monitor, ProgressBar, Table, and Slider.
 // It MUST remain a pure border-only styled.div — no flex, no overflow.
-export const StyledScrollView = styled.div<Pick<ScrollViewProps, 'shadow'>>`
+export const StyledScrollView = styled.div<{ $shadow?: boolean }>`
   position: relative;
   box-sizing: border-box;
   padding: 2px;
@@ -42,7 +42,7 @@ export const StyledScrollView = styled.div<Pick<ScrollViewProps, 'shadow'>>`
     border-right-color: ${({ theme }) => theme.borderLight};
     border-bottom-color: ${({ theme }) => theme.borderLight};
     pointer-events: none;
-    ${props => props.shadow && `box-shadow:${insetShadow};`}
+    ${props => props.$shadow && `box-shadow:${insetShadow};`}
   }
 `;
 
@@ -79,7 +79,7 @@ const ScrollView = forwardRef<HTMLDivElement, ScrollViewProps>(
     const scrollbar = useScrollbar('vertical');
 
     return (
-      <ScrollViewOuter ref={ref} shadow={shadow} style={style} {...otherProps}>
+      <ScrollViewOuter ref={ref} $shadow={shadow} style={style} {...otherProps}>
         <Content ref={scrollbar.contentRef as React.RefObject<HTMLDivElement>} onScroll={scrollbar.handleScroll}>
           {children}
         </Content>

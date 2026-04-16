@@ -36,11 +36,11 @@ const createFrameStyles = (variant) => {
 const StyledFrame = styled__default["default"].div`
   position: relative;
   font-size: 1rem;
-  ${({ variant }) => createFrameStyles(variant)}
-  ${({ variant }) => index.createBoxStyles(variant === "field" ? { background: "canvas", color: "canvasText" } : void 0)}
+  ${({ $variant }) => createFrameStyles($variant)}
+  ${({ $variant }) => index.createBoxStyles($variant === "field" ? { background: "canvas", color: "canvasText" } : void 0)}
 `;
 const Frame = React.memo(React.forwardRef(({ children, shadow = false, variant = "window", ...otherProps }, ref) => {
-  return React__default["default"].createElement(StyledFrame, { ref, shadow, variant, ...otherProps }, children);
+  return React__default["default"].createElement(StyledFrame, { ref, "$shadow": shadow, "$variant": variant, ...otherProps }, children);
 }));
 Frame.displayName = "Frame";
 

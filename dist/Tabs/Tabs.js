@@ -15,7 +15,7 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 
 const StyledTabs = styled__default["default"].div`
   position: relative;
-  ${({ isMultiRow, theme }) => isMultiRow && `
+  ${({ $isMultiRow, theme }) => $isMultiRow && `
   button {
     flex-grow: 1;
   }
@@ -72,7 +72,7 @@ const Tabs = React.forwardRef(({ value, onChange = index.noOp, children, rows = 
     tabRows.push(tabRows.splice(currentlySelectedRowIndex, 1)[0]);
     return tabRows;
   }, [children, onChange, rows, value]);
-  return React__default["default"].createElement(StyledTabs, { ...otherProps, isMultiRow: rows > 1, role: "tablist", ref }, tabRowsToRender.map((row) => React__default["default"].createElement(Row, { key: row.key }, row.tabs)));
+  return React__default["default"].createElement(StyledTabs, { ...otherProps, "$isMultiRow": rows > 1, role: "tablist", ref }, tabRowsToRender.map((row) => React__default["default"].createElement(Row, { key: row.key }, row.tabs)));
 });
 Tabs.displayName = "Tabs";
 

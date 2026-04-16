@@ -30,14 +30,14 @@ const Tip = styled__default["default"].span`
   position: absolute;
 
   z-index: 1;
-  display: ${(props) => props.show ? "block" : "none"};
+  display: ${(props) => props.$show ? "block" : "none"};
   padding: 4px;
   border: 2px solid ${({ theme }) => theme.borderDarkest};
   background: ${({ theme }) => theme.tooltip};
   box-shadow: ${index.shadow};
   text-align: center;
   font-size: 1rem;
-  ${(props) => positioningStyles[props.position]}
+  ${(props) => positioningStyles[props.$position]}
 `;
 const Wrapper = styled__default["default"].div`
   position: relative;
@@ -92,7 +92,7 @@ const Tooltip = React.forwardRef(({ className, children, disableFocusListener = 
   return React__default["default"].createElement(
     Wrapper,
     { "data-testid": "tooltip-wrapper", onBlur: blurCb, onFocus: focusCb, onMouseEnter: mouseEnterCb, onMouseLeave: mouseLeaveCb, tabIndex },
-    React__default["default"].createElement(Tip, { className, "data-testid": "tooltip", position, ref, show, style, ...otherProps }, text),
+    React__default["default"].createElement(Tip, { className, "data-testid": "tooltip", "$position": position, ref, "$show": show, style, ...otherProps }, text),
     children
   );
 });

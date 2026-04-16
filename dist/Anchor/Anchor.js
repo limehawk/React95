@@ -13,13 +13,13 @@ var styled__default = /*#__PURE__*/_interopDefaultLegacy(styled);
 const StyledAnchor = styled__default["default"].a`
   color: ${({ theme }) => theme.anchor};
   font-size: inherit;
-  text-decoration: ${({ underline }) => underline ? "underline" : "none"};
+  text-decoration: ${({ $underline }) => $underline ? "underline" : "none"};
   &:visited {
     color: ${({ theme }) => theme.anchorVisited};
   }
 `;
 const Anchor = React.memo(React.forwardRef(({ children, underline = true, ...otherProps }, ref) => {
-  return React__default["default"].createElement(StyledAnchor, { ref, underline, ...otherProps }, children);
+  return React__default["default"].createElement(StyledAnchor, { ref, "$underline": underline, ...otherProps }, children);
 }));
 Anchor.displayName = "Anchor";
 
